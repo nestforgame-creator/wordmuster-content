@@ -4,41 +4,48 @@
     "gameType": "Story",
     "difficultyBand": "EASY",
     "rackSeedLetters": "H A R E T C O U",
-    "targetWordsCsv": "HARE,CHAT,RACE,HEAT,HEAR,CARE,EARTH,TEAR,EAR,HEART,TEA,EAT,CAR,CAT,ART,RAT,COAT"
+    "targetWordsCsv": "HARE,CHAT,RACE,HEAT,HEAR,CARE,EARTH,TEAR,EAR,HEART,TEA,EAT,CAR,CAT,ART,RAT,COAT",
+    "isActive": true
   },
   {
     "chapterId": "AESOP_TTH_CH2",
     "gameType": "Story",
     "difficultyBand": "EASY",
     "rackSeedLetters": "S L O W F A T",
-    "targetWordsCsv": "SOFT,FAST,SLOW,FLOW,LAST,LOST,LOTS,STOW,WAFT,LOAF,OWL,TOW,SWAT,FLAT,SALT,FOWL,WAST"
+    "targetWordsCsv": "SOFT,FAST,SLOW,FLOW,LAST,LOST,LOTS,STOW,WAFT,LOAF,OWL,TOW,SWAT,FLAT,SALT,FOWL,WAST",
+    "isActive": true
   },
   {
     "chapterId": "AESOP_TTH_CH3",
     "gameType": "Story",
     "difficultyBand": "EASY",
     "rackSeedLetters": "S T E A D Y W",
-    "targetWordsCsv": "STEADY,STAY,SEAT,EAST,WEST,WAYS,DAY,YES,TEA,EAT,EASY,SWEAT,DATE,YET,AWED"
+    "targetWordsCsv": "STEADY,STAY,SEAT,EAST,WEST,WAYS,DAY,YES,TEA,EAT,EASY,SWEAT,DATE,YET,AWED",
+    "isActive": true
   },
+
   {
     "chapterId": "AESOP_LM_CH1",
     "gameType": "Story",
     "difficultyBand": "EASY",
-    "rackSeedLetters": "L L I O N M U S E E P A W R C Y F V",
-    "targetWordsCsv": "LION,MOUSE,PAW,ROAR,MERCY,FREE,SMALL,AMUSE,SAVE,SOAR,NOISE,LOOM,SOIL,LIME,LINE,MOLE,LOSE"
+    "rackSeedLetters": "L L I O O N M U S E E P A W R R C Y F V",
+    "targetWordsCsv": "LION,MOUSE,PAW,ROAR,MERCY,FREE,SMALL,AMUSE,SAVE,SOAR,NOISE,LOOM,SOIL,LIME,LINE,MOLE,LOSE",
+    "isActive": true
   },
   {
     "chapterId": "AESOP_LM_CH2",
     "gameType": "Story",
     "difficultyBand": "EASY",
-    "rackSeedLetters": "R R T A P O E E N L I H M U S C W V",
-    "targetWordsCsv": "TRAP,ROPE,NET,LION,ROAR,HELP,MOUSE,CHEW,FREE,SAVE,TONE,HEAL,HOME,NEAR,HEAR,STAR,WARM,SCAR"
+    "rackSeedLetters": "R R T A P O E E N L I H M U S C W V F",
+    "targetWordsCsv": "TRAP,ROPE,NET,LION,ROAR,HELP,MOUSE,CHEW,FREE,SAVE,TONE,HEAL,HOME,NEAR,HEAR,STAR,WARM,SCAR",
+    "isActive": true
   },
   {
     "chapterId": "AESOP_LM_CH3",
     "gameType": "Story",
     "difficultyBand": "EASY",
     "rackSeedLetters": "L I O N M U S E E R P H A F V T C W K D",
-    "targetWordsCsv": "SAVE,FREE,ROPE,CHEW,LION,MOUSE,HELP,SAFE,KIND,SOAR,HEAL,HOME,HEAR,ROAM,MOAN,WORK,MAKE,DARE"
+    "targetWordsCsv": "SAVE,FREE,ROPE,CHEW,LION,MOUSE,HELP,SAFE,KIND,SOAR,HEAL,HOME,HEAR,ROAM,MOAN,WORK,MAKE,DARE",
+    "isActive": true
   }
 ]
