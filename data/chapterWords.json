@@ -5,6 +5,21 @@
     "rackSeedLetters": "R A C E H O T",
     "targetWordsCsv": "RACE,HARE,HEAT,CARE,CHAT,COAT,HEAR,TEAR,EAR,ARC",
     "isActive": true
+  },
+  {
+    "chapterId": "AESOP_TTH_CH2",
+    "gameType": "Story",
+    "rackSeedLetters": "S L O W F A S T",
+    "targetWordsCsv": "SLOW,FAST,LAST,LOST,FLOW,SOFT,STOW,LOTS,OWLS,FOAL",
+    "isActive": true
+  },
+  {
+    "chapterId": "AESOP_TTH_CH3",
+    "gameType": "Story",
+    "rackSeedLetters": "S T E A D Y W",
+    "targetWordsCsv": "STEADY,STAY,SEAT,EAST,WEST,WAYS,DAY,YES,TEA,EAT",
+    "isActive": true
   }
 ]
+
 []
