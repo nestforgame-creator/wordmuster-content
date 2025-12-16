@@ -19,5 +19,26 @@
     "rackSeedLetters": "S T E A D Y W",
     "targetWordsCsv": "STEADY,STAY,SEAT,EAST,WEST,WAYS,DAY,YES,TEA,EAT"
     "isActive": true
-  }
+  },
+  {
+  "chapterId": "AESOP_LM_CH1",
+  "gameType": "Story",
+  "rackSeedLetters": "L I O N M O U S",
+  "targetWordsCsv": "LION,MOUSE,MOON,LOOM,SOIL,SLIM,LIMO,NOISY,LOINS,IONS",
+  "isActive": true
+},
+{
+  "chapterId": "AESOP_LM_CH2",
+  "gameType": "Story",
+  "rackSeedLetters": "P L E A M E R C",
+  "targetWordsCsv": "PLEA,MERCY,RELEASE,CLEAR,PEAR,REAL,PEAL,CALM,CLAMP,CREAM",
+  "isActive": true
+},
+{
+  "chapterId": "AESOP_LM_CH3",
+  "gameType": "Story",
+  "rackSeedLetters": "R O P E S A V E",
+  "targetWordsCsv": "ROPE,SAVE,RESCUE,SEVER,ROVES,SOAR,ROSE,PAVE,PORE,OVER",
+  "isActive": true
+}
 ]
