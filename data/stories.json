@@ -1,1 +1,15 @@
+[
+  {
+    "storyId": "AESOP_TTH",
+    "collectionCode": "AESOP",
+    "title": "The Tortoise and the Hare",
+    "blurb": "A proud hare learns a lesson from a steady tortoise.",
+    "language": "EN",
+    "totalChapters": 3,
+    "coverImageUrl": "/images/stories/AESOP_TTH/cover.png",
+    "isUnlockedByDefault": true,
+    "displayOrder": 1,
+    "isActive": true
+  }
+]
 []
