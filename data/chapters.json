@@ -2,80 +2,67 @@
   {
     "chapterId": "AESOP_TTH_CH1",
     "storyId": "AESOP_TTH",
+    "collectionCode": "AESOP",
     "chapterIndex": 1,
     "title": "The Boast",
-    "chapterNodeImageUrl": "/images/stories/AESOP_TTH/chapters/ch1-the-boast.png",
+    "shortDescription": "The hare boasts and mocks the tortoise. The tortoise stays calm.",
+    "chapterTextTemplate": "Every morning, the proud [HARE] would [CHAT] about each [RACE] he had won. His words felt like [HEAT], but the tortoise did not [HEAR] him. With great [CARE], the tortoise kept walking on the [EARTH]. He did not shed a [TEAR] or even twitch his [EAR]. Quietly, he kept his [HEART] strong.",
     "targetTimeSeconds": 60,
-    "targetWordsBase": 10,
-    "star1Percent": 50,
-    "star2Percent": 75,
-    "star3Percent": 90,
-    "isActive": true
+    "targetWordsBase": 10
   },
   {
     "chapterId": "AESOP_TTH_CH2",
     "storyId": "AESOP_TTH",
+    "collectionCode": "AESOP",
     "chapterIndex": 2,
     "title": "The Race",
-    "chapterNodeImageUrl": "/images/stories/AESOP_TTH/chapters/ch2-the-race.png",
+    "shortDescription": "The race begins. The hare speeds ahead and relaxes too soon.",
+    "chapterTextTemplate": "The path felt [SOFT] underfoot. The hare ran [FAST], while the tortoise moved [SLOW]. Leaves began to [FLOW] behind them. The hare feared coming [LAST] but still became [LOST]. He counted [LOTS] of easy steps, then chose to [STOW] his worries away. A cool breeze seemed to [WAFT] by as he rested, dreaming of [LOAF]ing all day.",
     "targetTimeSeconds": 60,
-    "targetWordsBase": 10,
-    "star1Percent": 50,
-    "star2Percent": 75,
-    "star3Percent": 90,
-    "isActive": true
+    "targetWordsBase": 10
   },
   {
     "chapterId": "AESOP_TTH_CH3",
     "storyId": "AESOP_TTH",
+    "collectionCode": "AESOP",
     "chapterIndex": 3,
-    "title": "The Finish",
-    "chapterNodeImageUrl": "/images/stories/AESOP_TTH/chapters/ch3-the-finish.png",
+    "title": "The Lesson",
+    "shortDescription": "The tortoise keeps going and wins. The animals learn the lesson.",
+    "chapterTextTemplate": "The tortoise walked with [STEADY] steps. He chose to [STAY] focused and found a [SEAT] of calm in his mind. From the [EAST] to the [WEST], animals watched his [WAYS]. Near the end of the [DAY], the crowd whispered [YES]. He smiled and drank warm [TEA]. At the finish, he chose to [EAT] slowly and proudly.",
     "targetTimeSeconds": 60,
-    "targetWordsBase": 10,
-    "star1Percent": 50,
-    "star2Percent": 75,
-    "star3Percent": 90,
-    "isActive": true
+    "targetWordsBase": 10
   },
-
   {
     "chapterId": "AESOP_LM_CH1",
     "storyId": "AESOP_LM",
+    "collectionCode": "AESOP",
     "chapterIndex": 1,
     "title": "The Lion Sleeps",
-    "chapterNodeImageUrl": "/images/stories/AESOP_LM/chapters/ch1-the-lion-sleeps.png",
+    "shortDescription": "A mouse wakes the lion. The lion shows mercy instead of anger.",
+    "chapterTextTemplate": "In the tall grass, the [LION] slept. A tiny [MOUSE] ran across his [PAW]. The lion gave a loud [ROAR], but then chose [MERCY]. He let the mouse go [FREE]. The mouse said it was [SMALL], but could still [AMUSE] and help. One day, it promised to [SAVE] him. The lion laughed and watched it [SOAR] away.",
     "targetTimeSeconds": 60,
-    "targetWordsBase": 10,
-    "star1Percent": 50,
-    "star2Percent": 75,
-    "star3Percent": 90,
-    "isActive": true
+    "targetWordsBase": 10
   },
   {
     "chapterId": "AESOP_LM_CH2",
     "storyId": "AESOP_LM",
+    "collectionCode": "AESOP",
     "chapterIndex": 2,
     "title": "The Trap",
-    "chapterNodeImageUrl": "/images/stories/AESOP_LM/chapters/ch2-the-lion-is-trapped.png",
+    "shortDescription": "The lion is trapped in a net and cannot escape alone.",
+    "chapterTextTemplate": "The lion stepped into a [TRAP]. Thick [ROPE] held a wide [NET]. Even the [LION] could not escape. He tried to [ROAR] for [HELP]. A [MOUSE] heard him and ran close. It began to [CHEW] the ropes. Soon the lion could be [FREE]. The mouse smiled and said, “I can [SAVE] you.”",
     "targetTimeSeconds": 60,
-    "targetWordsBase": 10,
-    "star1Percent": 50,
-    "star2Percent": 75,
-    "star3Percent": 90,
-    "isActive": true
+    "targetWordsBase": 10
   },
   {
     "chapterId": "AESOP_LM_CH3",
     "storyId": "AESOP_LM",
+    "collectionCode": "AESOP",
     "chapterIndex": 3,
     "title": "The Rescue",
-    "chapterNodeImageUrl": "/images/stories/AESOP_LM/chapters/ch3-the-mouse-saves-the-lion.png",
+    "shortDescription": "The mouse frees the lion. The lion learns not to judge by size.",
+    "chapterTextTemplate": "The mouse came to [SAVE] the lion again. It worked until the lion was [FREE]. It tugged each [ROPE] and began to [CHEW] fast. The [LION] watched the brave [MOUSE]. The lion asked for [HELP] no longer. He called the mouse [SAFE] and truly [KIND]. Together, they watched hope [SOAR] through the trees.",
     "targetTimeSeconds": 60,
-    "targetWordsBase": 10,
-    "star1Percent": 50,
-    "star2Percent": 75,
-    "star3Percent": 90,
-    "isActive": true
+    "targetWordsBase": 10
   }
 ]
