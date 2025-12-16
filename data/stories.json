@@ -7,20 +7,22 @@
     "language": "EN",
     "totalChapters": 3,
     "coverImageUrl": "/images/stories/AESOP_TTH/cover.png",
+    "moral": "SLOW AND STEADY WINS THE RACE.",
     "isUnlockedByDefault": true,
     "displayOrder": 1,
     "isActive": true
   },
   {
-  "storyId": "AESOP_LM",
-  "collectionCode": "AESOP",
-  "title": "The Lion and the Mouse",
-  "blurb": "A small mouse proves even the mighty lion can need help.",
-  "language": "EN",
-  "totalChapters": 3,
-  "coverImageUrl": "/images/stories/AESOP_LM/cover.png",
-  "isUnlockedByDefault": true,
-  "displayOrder": 2,
-  "isActive": true
+    "storyId": "AESOP_LM",
+    "collectionCode": "AESOP",
+    "title": "The Lion and the Mouse",
+    "blurb": "A small mouse proves even the mighty lion can need help.",
+    "language": "EN",
+    "totalChapters": 3,
+    "coverImageUrl": "/images/stories/AESOP_LM/cover.png",
+    "moral": "NO ACT OF KINDNESS IS EVER WASTED.",
+    "isUnlockedByDefault": true,
+    "displayOrder": 2,
+    "isActive": true
   }
 ]
