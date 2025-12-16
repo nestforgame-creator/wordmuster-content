@@ -1,1 +1,10 @@
+[
+  {
+    "chapterId": "AESOP_TTH_CH1",
+    "gameType": "Story",
+    "rackSeedLetters": "R A C E H O T",
+    "targetWordsCsv": "RACE,HARE,HEAT,CARE,CHAT,COAT,HEAR,TEAR,EAR,ARC",
+    "isActive": true
+  }
+]
 []
