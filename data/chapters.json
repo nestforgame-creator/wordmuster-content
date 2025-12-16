@@ -37,5 +37,45 @@
     "star2Percent": 75,
     "star3Percent": 90,
     "isActive": true
+  },
+
+  {
+    "chapterId": "AESOP_LM_CH1",
+    "storyId": "AESOP_LM",
+    "chapterIndex": 1,
+    "title": "The Lion Sleeps",
+    "chapterNodeImageUrl": "/images/stories/AESOP_LM/chapters/ch1-the-lion-sleeps.png",
+    "targetTimeSeconds": 60,
+    "targetWordsBase": 10,
+    "star1Percent": 50,
+    "star2Percent": 75,
+    "star3Percent": 90,
+    "isActive": true
+  },
+  {
+    "chapterId": "AESOP_LM_CH2",
+    "storyId": "AESOP_LM",
+    "chapterIndex": 2,
+    "title": "The Trap",
+    "chapterNodeImageUrl": "/images/stories/AESOP_LM/chapters/ch2-the-lion-is-trapped.png",
+    "targetTimeSeconds": 60,
+    "targetWordsBase": 10,
+    "star1Percent": 50,
+    "star2Percent": 75,
+    "star3Percent": 90,
+    "isActive": true
+  },
+  {
+    "chapterId": "AESOP_LM_CH3",
+    "storyId": "AESOP_LM",
+    "chapterIndex": 3,
+    "title": "The Rescue",
+    "chapterNodeImageUrl": "/images/stories/AESOP_LM/chapters/ch3-the-mouse-saves-the-lion.png",
+    "targetTimeSeconds": 60,
+    "targetWordsBase": 10,
+    "star1Percent": 50,
+    "star2Percent": 75,
+    "star3Percent": 90,
+    "isActive": true
   }
 ]
