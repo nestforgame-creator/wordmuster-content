@@ -10,7 +10,7 @@
     "isUnlockedByDefault": true,
     "displayOrder": 1,
     "isActive": true
-  }
+  },
   {
   "storyId": "AESOP_LM",
   "collectionCode": "AESOP",
@@ -22,5 +22,5 @@
   "isUnlockedByDefault": true,
   "displayOrder": 2,
   "isActive": true
-}
+  }
 ]
