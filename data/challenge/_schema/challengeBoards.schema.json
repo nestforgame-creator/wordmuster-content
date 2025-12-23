@@ -1,1 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wordmuster.dev/schemas/challengeBoards.schema.json",
+  "title": "Challenge Boards Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dataVersion", "generatedOn", "sourceLexiconVersion", "boards"],
+  "properties": {
+    "dataVersion": { "type": "string", "minLength": 1 },
+    "generatedOn": { "type": "string", "format": "date-time" },
+    "sourceLexiconVersion": { "type": "string", "minLength": 1 },
+
+    "boards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "boardId",
+          "difficulty",
+          "timerSeconds",
+          "rackSeedLetters",
+          "totalPossibleWords",
+          "targetWordsCount",
+          "targetWordsCsv",
+          "isActive"
+        ],
+        "properties": {
+          "boardId": { "type": "string", "minLength": 1 },
+          "difficulty": { "type": "string", "enum": ["EASY", "MEDIUM", "HARD", "PRO"] },
+          "timerSeconds": { "type": "integer", "enum": [30, 60, 90] },
+
+          "rackSeedLetters": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Z](\\s[A-Z])*$"
+          },
+
+          "totalPossibleWords": { "type": "integer", "minimum": 1 },
+          "targetWordsCount": { "type": "integer", "minimum": 1 },
+
+          "targetWordsCsv": {
+            "type": "string",
+            "minLength": 3
+          },
+
+          "isActive": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
 
