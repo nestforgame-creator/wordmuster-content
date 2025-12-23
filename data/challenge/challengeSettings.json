@@ -1,1 +1,10 @@
+{
+  "dataVersion": "1.0.0",
+  "generatedOn": "2025-12-23T10:00:00Z",
+  "sourceLexiconVersion": "1.0.0",
+  "difficultyBands": [...],
+  "timers": [...],
+  "scoring": {...},
+  "hints": {...}
+}
 
