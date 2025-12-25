@@ -9,7 +9,6 @@
     "dataVersion": { "type": "string", "minLength": 1 },
     "generatedOn": { "type": "string", "format": "date-time" },
     "sourceLexiconVersion": { "type": "string", "minLength": 1 },
-
     "boards": {
       "type": "array",
       "minItems": 1,
@@ -18,37 +17,35 @@
         "additionalProperties": false,
         "required": [
           "boardId",
-          "difficulty",
+          "difficultyBand",
           "timerSeconds",
           "rackSeedLetters",
-          "totalPossibleWords",
+          "totalPossibleWordsCount",
           "targetWordsCount",
+          "totalPossibleWordsCsv",
           "targetWordsCsv",
           "isActive"
         ],
         "properties": {
           "boardId": { "type": "string", "minLength": 1 },
-          "difficulty": { "type": "string", "enum": ["EASY", "MEDIUM", "HARD", "PRO"] },
+          "difficultyBand": {
+            "type": "string",
+            "enum": ["EASY", "MEDIUM", "HARD", "PRO"]
+          },
           "timerSeconds": { "type": "integer", "enum": [30, 60, 90] },
-
           "rackSeedLetters": {
             "type": "string",
             "minLength": 1,
-            "pattern": "^[A-Z](\\s[A-Z])*$"
+            "description": "Space-separated uppercase letters, e.g., A B C D E F G",
+            "pattern": "^[A-Z](\\s[A-Z])+$"
           },
-
-          "totalPossibleWords": { "type": "integer", "minimum": 1 },
+          "totalPossibleWordsCount": { "type": "integer", "minimum": 1 },
           "targetWordsCount": { "type": "integer", "minimum": 1 },
-
-          "targetWordsCsv": {
-            "type": "string",
-            "minLength": 3
-          },
-
+          "totalPossibleWordsCsv": { "type": "string", "minLength": 3 },
+          "targetWordsCsv": { "type": "string", "minLength": 3 },
           "isActive": { "type": "boolean" }
         }
       }
     }
   }
 }
-
