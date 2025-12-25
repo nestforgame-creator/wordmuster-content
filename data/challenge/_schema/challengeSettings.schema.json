@@ -8,15 +8,41 @@
     "dataVersion",
     "generatedOn",
     "sourceLexiconVersion",
-    "difficultyBands",
-    "timers",
+    "language",
     "scoring",
+    "difficultyBands",
     "hints"
   ],
   "properties": {
     "dataVersion": { "type": "string", "minLength": 1 },
     "generatedOn": { "type": "string", "format": "date-time" },
     "sourceLexiconVersion": { "type": "string", "minLength": 1 },
+    "language": { "type": "string", "enum": ["EN"] },
+
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["defaultMode", "modes"],
+      "properties": {
+        "defaultMode": {
+          "type": "string",
+          "enum": ["COMPLETION_TOTAL_POSSIBLE", "COMPLETION_TARGET"]
+        },
+        "modes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["code", "formula"],
+            "properties": {
+              "code": { "type": "string", "minLength": 1 },
+              "formula": { "type": "string", "minLength": 3 }
+            }
+          }
+        }
+      }
+    },
 
     "difficultyBands": {
       "type": "array",
@@ -24,47 +50,32 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["code", "label", "letterCount", "repeatsAllowedTimers"],
+        "required": [
+          "code",
+          "gradeHint",
+          "letterCount",
+          "timersSeconds",
+          "allowLetterReuseByTimer"
+        ],
         "properties": {
-          "code": {
-            "type": "string",
-            "enum": ["EASY", "MEDIUM", "HARD", "PRO"]
-          },
-          "label": { "type": "string", "minLength": 1 },
-          "letterCount": { "type": "integer", "minimum": 4, "maximum": 14 },
-          "repeatsAllowedTimers": {
+          "code": { "type": "string", "enum": ["EASY", "MEDIUM", "HARD", "PRO"] },
+          "gradeHint": { "type": "string", "minLength": 1 },
+          "letterCount": { "type": "integer", "minimum": 5, "maximum": 14 },
+          "timersSeconds": {
             "type": "array",
-            "items": { "type": "integer", "enum": [30, 60, 90] },
-            "uniqueItems": true
-          }
-        }
-      }
-    },
-
-    "timers": {
-      "type": "array",
-      "minItems": 1,
-      "items": { "type": "integer", "enum": [30, 60, 90] },
-      "uniqueItems": true
-    },
-
-    "scoring": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["completionMode", "allowTargetMode", "allWordsBonus"],
-      "properties": {
-        "completionMode": {
-          "type": "string",
-          "enum": ["FOUND_OVER_TOTAL_POSSIBLE"]
-        },
-        "allowTargetMode": { "type": "boolean" },
-        "allWordsBonus": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": ["enabled", "coinsBonus"],
-          "properties": {
-            "enabled": { "type": "boolean" },
-            "coinsBonus": { "type": "integer", "minimum": 0 }
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "integer", "enum": [30, 60, 90] }
+          },
+          "allowLetterReuseByTimer": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["30", "60", "90"],
+            "properties": {
+              "30": { "type": "boolean" },
+              "60": { "type": "boolean" },
+              "90": { "type": "boolean" }
+            }
           }
         }
       }
@@ -73,30 +84,26 @@
     "hints": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["requiresAd", "types"],
+      "required": ["currency", "options", "maxHintsPerRound"],
       "properties": {
-        "requiresAd": { "type": "boolean" },
-        "types": {
+        "currency": { "type": "string", "enum": ["COINS"] },
+        "maxHintsPerRound": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "options": {
           "type": "array",
           "minItems": 1,
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["code", "label", "coinsCost", "reveal"],
+            "required": ["code", "costCoins", "reveals"],
             "properties": {
-              "code": { "type": "string", "enum": ["HINT_A", "HINT_B", "HINT_C"] },
-              "label": { "type": "string", "minLength": 1 },
-              "coinsCost": { "type": "integer", "minimum": 0 },
-              "reveal": {
-                "type": "object",
-                "additionalProperties": false,
-                "required": ["mode", "includeLength"],
-                "properties": {
-                  "mode": {
-                    "type": "string",
-                    "enum": ["FIRST_LETTER", "RANDOM_LETTER", "RANDOM_2_OR_3"]
-                  },
-                  "includeLength": { "type": "boolean" }
+              "code": { "type": "string", "minLength": 1 },
+              "costCoins": { "type": "integer", "minimum": 0 },
+              "reveals": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "enum": ["firstLetter", "randomLetter", "twoLetters", "wordLength"]
                 }
               }
             }
