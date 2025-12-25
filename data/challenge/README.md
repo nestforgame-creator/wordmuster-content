@@ -98,3 +98,30 @@ Scoring logic uses:
 
 - `rackSeedLetters` are **space-separated uppercase letters**  
   Example:
+
+
+- Game code must:
+- Remove spaces
+- Normalize casing
+- Enforce letter frequency limits
+
+---
+
+## Update Workflow (Required)
+
+1. Update `lexicon.json`
+2. Bump `lexiconVersion`
+3. Regenerate `challengeBoards.json`
+4. Bump `dataVersion`
+5. Set `sourceLexiconVersion`
+6. Validate against schemas
+7. Commit as **one atomic release**
+
+---
+
+## Stability Rule
+
+Schemas and field names are **frozen** once consumed by the game.
+Any future changes require:
+- New fields (never breaking changes)
+- Or a new dataVersion
