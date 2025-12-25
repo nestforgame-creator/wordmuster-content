@@ -99,7 +99,7 @@ Scoring logic uses:
 - `rackSeedLetters` are **space-separated uppercase letters**  
   Example:
 
-
+## Example: E T R A O S N
 - Game code must:
 - Remove spaces
 - Normalize casing
