@@ -101,7 +101,8 @@ Scoring logic uses:
 - `ETRAOSN`
 - `E,T,R,A,O,S,N`
 - `E T R A O S N -`
-
+Note: The dataset guarantees rack feasibility. Runtime logic enforces
+letter frequency limits and repetition rules as defined in challengeSettings.json.
 ### Runtime handling (game code responsibility)
 The game runtime **must**:
 1. Remove spaces from `rackSeedLetters`
