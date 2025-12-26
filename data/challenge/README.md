@@ -204,9 +204,10 @@ Each ticket allows one rewarded ad view.
 
 Ad reward: +15 coins per completed ad.
 
-Tracking: hintsUsedToday, adsWatchedToday → availableTickets = min(2 + hintsUsedToday, 10) - adsWatchedToday.
+Tracking: hintsUsedToday, adsWatchedToday
+→ availableTickets = min(2 + hintsUsedToday, 10) - adsWatchedToday.
 
-5) Progression & Gates (Legacy/Quest map)
+5) Progression & Gates (Legacy/Quest Map)
 5.1 Node unlock rule
 To Enter Node N	Requirement
 Progression	Clear Node N−1 with ≥ 1★
@@ -224,4 +225,61 @@ Gate At Node…	Required Cumulative 3★ (to proceed past prior block)
 45	54
 50 (final)	65
 
-These gates ensure consistent 3★ attempts over time and prevent skimming.
+These gates ensure sustained 3★ attempts over time and prevent skimming.
+
+6) Timers (Legacy/Quest)
+Mode	Options	Default
+Challenge (Legacy/Quest)	60s, 90s	60s
+Timer multiplier	60s = 1.0, 90s = 0.9	—
+7) Benchmark Bar (Clarity)
+Label	Meaning
+You	Player progress bar
+Benchmark	A strong target score for this rack (not a live opponent)
+
+Tip shown at round start:
+“The grey bar shows a strong benchmark for this round. Try to beat it.”
+
+8) Example Calculations
+
+Medium, 60s, 74% (1★), No hints
+
+Base = 1 × 4 = 4
+
+Bonuses = +3 (No-Hint) +5 (First-Clear) = 8
+
+Mult = 1.2 × 1.0
+
+Coins = floor((4+8)×1.2) = 14
+
+Hard, 60s, 90% (3★), No hints, Beat benchmark
+
+Base = 3 × 6 = 18
+
+Bonuses = +3 (No-Hint) +5 (First-Clear) +5 (Beat) = 13
+
+Mult = 1.5 × 1.0
+
+Coins = floor((18+13)×1.5) = 46
+
+Pro, 90s, 75% (2★), 2 hints
+
+Base = 2 × 8 = 16
+
+Bonuses = 0 (No-Hint lost)
+
+Mult = 1.8 × 0.9 = 1.62
+
+Coins = floor(16×1.62) = 25
+
+Daily ad tickets now available = base 2 + hintsUsedToday (≥2), capped at 10
+
+9) Implementation Keys
+Key	Value / Notes
+Stars function	50 / 75 / 90 thresholds (round down)
+No-Hint bonus	+3 only if 0 hints used
+Ad tickets	2 base + hintsUsedToday; max 10/day; reset 08:00
+Reseed rack	5 coins; same node; no unlock
+Node unlock	Must clear previous node with ≥1★
+Gate checks	See table above (cumulative 3★ required)
+Timer multipliers	60s = 1.0, 90s = 0.9
+Benchmark text	Show infoTag on round start
