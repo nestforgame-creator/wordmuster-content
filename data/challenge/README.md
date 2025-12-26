@@ -97,20 +97,24 @@ Scoring logic uses:
 ## Rack Format Rules
 
 - `rackSeedLetters` **must be space-separated uppercase letters**
-- Example (valid): E T R A O S N- Invalid formats:
-- `ETRAOSN`
-- `E,T,R,A,O,S,N`
-- `E T R A O S N -`
-Note: The dataset guarantees rack feasibility. Runtime logic enforces
-letter frequency limits and repetition rules as defined in challengeSettings.json.
+- Example (valid): `E T R A O S N`
+- Invalid examples:
+  - `ETRAOSN` (no spaces)
+  - `E,T,R,A,O,S,N` (commas)
+  - `E  T R A O S N` (double spaces)
+  - `E T R A O S N-` (extra trailing character)
+
 ### Runtime handling (game code responsibility)
 The game runtime **must**:
 1. Remove spaces from `rackSeedLetters`
 2. Normalize to uppercase
 3. Enforce **letter frequency limits**
- - A letter may be used only as many times as it appears in the rack
- - Words requiring repeated letters are valid **only if** the rack contains that letter multiple times
- - (Exception: repetition rules explicitly enabled in `challengeSettings.json` for certain difficulty/timer combinations)
+   - A letter may be used only as many times as it appears in the rack
+   - Words requiring repeated letters are valid **only if** the rack contains that letter multiple times
+   - Exception: repetition rules explicitly enabled in `challengeSettings.json` for specific difficulty/timer combinations
+
+
+Note: The dataset guarantees rack feasibility. Runtime logic enforces letter frequency limits and repetition rules as defined in challengeSettings.json.
 
 ---
 
