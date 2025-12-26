@@ -145,3 +145,81 @@ Future changes must follow **one** of these rules:
 - Create a **new `dataVersion`** and regenerate dependent datasets
 
 Breaking changes to existing fields or schemas are **not permitted**.
+
+##WordMuster – Challenge Mode Rules (v1.1)
+1) Star Thresholds
+Stars	Completion % (F / T)
+⭐	≥ 50%
+⭐⭐	≥ 75%
+⭐⭐⭐	≥ 90%
+
+Fractions round down (e.g., 1.8★ → 1★).
+
+Hints do not reduce stars; they only affect bonuses.
+
+2) Coins – Base, Multipliers, Bonuses
+2.1 Base coins per star (by difficulty)
+Difficulty	Coins per ★
+Easy	2
+Medium	4
+Hard	6
+Professional	8
+2.2 Multipliers
+Factor	Options	Multiplier
+Difficulty	Easy / Medium / Hard / Pro	1.0 / 1.2 / 1.5 / 1.8
+Timer	60s / 90s	1.0 / 0.9
+2.3 Bonuses
+Bonus	Value
+Beat Benchmark	+5
+No-Hint Clear	+3
+First-Clear (this node)	+5
+Perfect-Clear (all target words)	+5
+2.4 Final coins formula
+coins = floor( (stars * coinsPerStar[difficulty] + sum(bonuses))
+               * diffMult[difficulty]
+               * timerMult[timer] )
+
+3) Hints, Costs & Limits
+3.1 Per-round limits & costs
+Hint Type	Cost (coins)	Per-Round Limit	Notes
+Reveal Letter	5	3	Removes No-Hint bonus
+Reveal Word (optional)	12	1	Removes No-Hint bonus
+
+Using any hint removes the No-Hint +3 bonus for that round.
+
+3.2 Reseed Rack (unstick tool)
+Action	Cost	Effect
+Re-seed current node rack	5 coins	New rack for same node; does not unlock/bypass the node
+4) Rewarded Ads → Coins (tickets tied to hint usage)
+4.1 Daily ad tickets
+Item	Rule
+Base tickets per day	2
+Tickets gained per hint used (same day)	+1 each
+Daily max tickets	10
+Reset time	08:00 local
+
+Each ticket allows one rewarded ad view.
+
+Ad reward: +15 coins per completed ad.
+
+Tracking: hintsUsedToday, adsWatchedToday → availableTickets = min(2 + hintsUsedToday, 10) - adsWatchedToday.
+
+5) Progression & Gates (Legacy/Quest map)
+5.1 Node unlock rule
+To Enter Node N	Requirement
+Progression	Clear Node N−1 with ≥ 1★
+Skips	Not allowed for unlock (practice preview OK, no stars/coins)
+5.2 Gate checks (every 5 nodes)
+Gate At Node…	Required Cumulative 3★ (to proceed past prior block)
+5	2
+10	5
+15	9
+20	14
+25	20
+30	27
+35	35
+40	44
+45	54
+50 (final)	65
+
+These gates ensure consistent 3★ attempts over time and prevent skimming.
