@@ -96,32 +96,47 @@ Scoring logic uses:
 
 ## Rack Format Rules
 
-- `rackSeedLetters` are **space-separated uppercase letters**  
-  Example:
+- `rackSeedLetters` **must be space-separated uppercase letters**
+- Example (valid): E T R A O S N- Invalid formats:
+- `ETRAOSN`
+- `E,T,R,A,O,S,N`
+- `E T R A O S N -`
 
-## Example: E T R A O S N
-- Game code must:
-- Remove spaces
-- Normalize casing
-- Enforce letter frequency limits
+### Runtime handling (game code responsibility)
+The game runtime **must**:
+1. Remove spaces from `rackSeedLetters`
+2. Normalize to uppercase
+3. Enforce **letter frequency limits**
+ - A letter may be used only as many times as it appears in the rack
+ - Words requiring repeated letters are valid **only if** the rack contains that letter multiple times
+ - (Exception: repetition rules explicitly enabled in `challengeSettings.json` for certain difficulty/timer combinations)
 
 ---
 
 ## Update Workflow (Required)
 
+All Challenge Mode data updates **must follow this sequence** to ensure traceability and compatibility:
+
 1. Update `lexicon.json`
 2. Bump `lexiconVersion`
 3. Regenerate `challengeBoards.json`
 4. Bump `dataVersion`
-5. Set `sourceLexiconVersion`
-6. Validate against schemas
-7. Commit as **one atomic release**
+5. Set `sourceLexiconVersion` in:
+ - `challengeBoards.json`
+ - `challengeSettings.json`
+6. Validate all JSON files against schemas in `_schema/`
+7. Commit **all changes together** as **one atomic release**
+
+Partial commits are not allowed.
 
 ---
 
 ## Stability Rule
 
-Schemas and field names are **frozen** once consumed by the game.
-Any future changes require:
-- New fields (never breaking changes)
-- Or a new dataVersion
+Schemas and field names are **frozen** once consumed by the game runtime.
+
+Future changes must follow **one** of these rules:
+- Add **new optional fields only** (never breaking changes), or
+- Create a **new `dataVersion`** and regenerate dependent datasets
+
+Breaking changes to existing fields or schemas are **not permitted**.
