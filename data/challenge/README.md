@@ -283,3 +283,12 @@ Node unlock	Must clear previous node with ≥1★
 Gate checks	See table above (cumulative 3★ required)
 Timer multipliers	60s = 1.0, 90s = 0.9
 Benchmark text	Show infoTag on round start
+
+
+> ⚠️ Note:
+> The following section defines **gameplay progression rules**.
+> It does NOT introduce new schema fields.
+> Any data changes required to support these rules must follow the Stability Rule above.
+
+
+
