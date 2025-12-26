@@ -146,7 +146,9 @@ Future changes must follow **one** of these rules:
 
 Breaking changes to existing fields or schemas are **not permitted**.
 
-##WordMuster – Challenge Mode Rules (v1.1)
+
+## WordMuster – Challenge Mode Rules (v1.1)
+
 1) Star Thresholds
 Stars	Completion % (F / T)
 ⭐	≥ 50%
