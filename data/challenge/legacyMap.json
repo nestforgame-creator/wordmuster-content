@@ -1,1 +1,92 @@
+{
+  "dataVersion": "1.0.0",
+  "generatedOn": "2025-12-30T00:00:00Z",
+  "sourceChallengeBoardsVersion": "1.1.0",
+  "legacyMapVersion": "LEGACY_50_V1",
+  "display": {
+    "mapId": "A_TO_Z_STARTER_50",
+    "mapName": "Legacy Journey",
+    "mapTheme": "day",
+    "levelsCount": 50
+  },
+  "progressionRules": {
+    "unlockModel": "HYBRID",
+    "unlockRequirements": {
+      "minStarsToClear": 1,
+      "unlockNextBy": ["STARS", "COINS"],
+      "unlockIfStarsMet": true,
+      "unlockIfCoinsPaid": true
+    },
+    "replayRules": {
+      "replayAllowed": true,
+      "bestStarsKept": true,
+      "bestScoreKept": true
+    }
+  },
+  "levels": [
+    {
+      "levelId": "L001_A1",
+      "order": 1,
+      "milestoneLetter": "A",
+      "subIndex": 1,
+      "difficultyBand": "EASY",
+      "timerSeconds": 30,
+      "boardId": "EASY_001_30",
+      "economy": {
+        "entryCostCoins": 0,
+        "rewardCoinsBase": 10,
+        "rewardCoinsPerStar": 5,
+        "unlockNextCostCoins": 0
+      },
+      "clearRequirements": {
+        "minStars": 1,
+        "altUnlockCoins": 0
+      }
+    },
+    {
+      "levelId": "L002_A2",
+      "order": 2,
+      "milestoneLetter": "A",
+      "subIndex": 2,
+      "difficultyBand": "EASY",
+      "timerSeconds": 60,
+      "boardId": "EASY_001_60",
+      "economy": {
+        "entryCostCoins": 0,
+        "rewardCoinsBase": 12,
+        "rewardCoinsPerStar": 6,
+        "unlockNextCostCoins": 20
+      },
+      "clearRequirements": {
+        "minStars": 1,
+        "altUnlockCoins": 20
+      }
+    },
+    {
+      "levelId": "L003_A3",
+      "order": 3,
+      "milestoneLetter": "B",
+      "subIndex": 1,
+      "difficultyBand": "EASY",
+      "timerSeconds": 90,
+      "boardId": "EASY_001_90",
+      "economy": {
+        "entryCostCoins": 0,
+        "rewardCoinsBase": 14,
+        "rewardCoinsPerStar": 7,
+        "unlockNextCostCoins": 25
+      },
+      "clearRequirements": {
+        "minStars": 1,
+        "altUnlockCoins": 25
+      }
+    }
+  ],
+  "path": {
+    "nodes": [
+      { "levelId": "L001_A1", "next": "L002_A2" },
+      { "levelId": "L002_A2", "next": "L003_A3" }
+    ]
+  }
+}
 
