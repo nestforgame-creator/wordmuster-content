@@ -1,92 +1,164 @@
 {
   "dataVersion": "1.0.0",
-  "generatedOn": "2025-12-30T00:00:00Z",
-  "sourceChallengeBoardsVersion": "1.1.0",
-  "legacyMapVersion": "LEGACY_50_V1",
-  "display": {
-    "mapId": "A_TO_Z_STARTER_50",
-    "mapName": "Legacy Journey",
-    "mapTheme": "day",
-    "levelsCount": 50
-  },
-  "progressionRules": {
-    "unlockModel": "HYBRID",
-    "unlockRequirements": {
-      "minStarsToClear": 1,
-      "unlockNextBy": ["STARS", "COINS"],
-      "unlockIfStarsMet": true,
-      "unlockIfCoinsPaid": true
+  "generatedOn": "2026-01-06T00:00:00Z",
+  "mapId": "legacy_v1",
+  "mode": "challenge_legacy",
+  "assets": {
+    "backgrounds": {
+      "day_1x": "images/challenge/backgrounds/legacy/legacy_map_day_1x.png",
+      "day_2x": "images/challenge/backgrounds/legacy/legacy_map_day_2x.png",
+      "night_1x": "images/challenge/backgrounds/legacy/legacy_map_night_1x.png",
+      "night_2x": "images/challenge/backgrounds/legacy/legacy_map_night_2x.png"
     },
-    "replayRules": {
-      "replayAllowed": true,
-      "bestStarsKept": true,
-      "bestScoreKept": true
+    "letters": {
+      "A_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_A_day_2x.png",
+      "A_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_A_night_2x.png",
+      "B_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_B_day_2x.png",
+      "B_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_B_night_2x.png",
+      "C_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_C_day_2x.png",
+      "C_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_C_night_2x.png",
+      "D_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_D_day_2x.png",
+      "D_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_D_night_2x.png",
+      "E_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_E_day_2x.png",
+      "E_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_E_night_2x.png",
+      "F_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_F_day_2x.png",
+      "F_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_F_night_2x.png",
+
+      "G_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_G_day_2x.png",
+      "G_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_G_night_2x.png",
+      "H_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_H_day_2x.png",
+      "H_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_H_night_2x.png",
+      "I_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_I_day_2x.png",
+      "I_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_I_night_2x.png",
+      "J_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_J_day_2x.png",
+      "J_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_J_night_2x.png",
+      "K_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_K_day_2x.png",
+      "K_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_K_night_2x.png",
+      "L_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_L_day_2x.png",
+      "L_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_L_night_2x.png",
+      "M_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_M_day_2x.png",
+      "M_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_M_night_2x.png",
+      "N_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_N_day_2x.png",
+      "N_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_N_night_2x.png",
+      "O_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_O_day_2x.png",
+      "O_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_O_night_2x.png",
+      "P_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_P_day_2x.png",
+      "P_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_P_night_2x.png",
+      "Q_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_Q_day_2x.png",
+      "Q_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_Q_night_2x.png",
+      "R_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_R_day_2x.png",
+      "R_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_R_night_2x.png",
+      "S_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_S_day_2x.png",
+      "S_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_S_night_2x.png",
+      "T_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_T_day_2x.png",
+      "T_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_T_night_2x.png",
+      "U_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_U_day_2x.png",
+      "U_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_U_night_2x.png",
+      "V_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_V_day_2x.png",
+      "V_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_V_night_2x.png",
+      "W_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_W_day_2x.png",
+      "W_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_W_night_2x.png",
+      "X_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_X_day_2x.png",
+      "X_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_X_night_2x.png",
+      "Y_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_Y_day_2x.png",
+      "Y_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_Y_night_2x.png",
+      "Z_day_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_Z_day_2x.png",
+      "Z_night_2x": "images/challenge/backgrounds/legacy_letters/legacy_letter_Z_night_2x.png"
+    },
+    "ui": {
+      "tile_base_2x": "images/challenge/ui/legacy/tile_base_2x.png",
+      "lock_2x": "images/challenge/ui/legacy/lock_2x.png",
+      "star_empty_2x": "images/challenge/ui/legacy/star_empty_2x.png",
+      "star_filled_2x": "images/challenge/ui/legacy/star_filled_2x.png"
+    }
+  },
+  "rendering": {
+    "coordinateSystem": "normalized_percent",
+    "tileAnchor": "center",
+    "tileScale": 0.10,
+    "minTapRadius": 0.035,
+    "safeMargins": { "top": 0.06, "right": 0.06, "bottom": 0.08, "left": 0.06 }
+  },
+  "unlockModel": {
+    "defaultRule": {
+      "requiresPreviousLevel": true,
+      "minStarsToUnlockNext": 1,
+      "coinBypassEnabled": true
+    },
+    "economy": {
+      "entryCostCoins": 0,
+      "unlockBypassCostCoins": 40,
+      "rewardCoinsOnComplete": 25
     }
   },
   "levels": [
     {
-      "levelId": "L001_A1",
-      "order": 1,
-      "milestoneLetter": "A",
-      "subIndex": 1,
-      "difficultyBand": "EASY",
-      "timerSeconds": 30,
-      "boardId": "EASY_001_30",
-      "economy": {
-        "entryCostCoins": 0,
-        "rewardCoinsBase": 10,
-        "rewardCoinsPerStar": 5,
-        "unlockNextCostCoins": 0
-      },
-      "clearRequirements": {
-        "minStars": 1,
-        "altUnlockCoins": 0
-      }
+      "levelId": "L001_A",
+      "letter": "A",
+      "sequence": 1,
+      "boardRef": { "type": "boardPoolId", "value": "LEGACY_A_POOL" },
+      "difficulty": "EASY",
+      "timer": 60,
+      "assets": { "day": "A_day_2x", "night": "A_night_2x" },
+      "mapTile": { "x": 0.50, "y": 0.86 },
+      "unlock": { "requiresLevelId": null, "bypassCostCoins": 0 }
     },
     {
-      "levelId": "L002_A2",
-      "order": 2,
-      "milestoneLetter": "A",
-      "subIndex": 2,
-      "difficultyBand": "EASY",
-      "timerSeconds": 60,
-      "boardId": "EASY_001_60",
-      "economy": {
-        "entryCostCoins": 0,
-        "rewardCoinsBase": 12,
-        "rewardCoinsPerStar": 6,
-        "unlockNextCostCoins": 20
-      },
-      "clearRequirements": {
-        "minStars": 1,
-        "altUnlockCoins": 20
-      }
+      "levelId": "L002_B",
+      "letter": "B",
+      "sequence": 2,
+      "boardRef": { "type": "boardPoolId", "value": "LEGACY_B_POOL" },
+      "difficulty": "EASY",
+      "timer": 60,
+      "assets": { "day": "B_day_2x", "night": "B_night_2x" },
+      "mapTile": { "x": 0.47, "y": 0.82 },
+      "unlock": { "requiresLevelId": "L001_A", "bypassCostCoins": 40 }
     },
     {
-      "levelId": "L003_A3",
-      "order": 3,
-      "milestoneLetter": "B",
-      "subIndex": 1,
-      "difficultyBand": "EASY",
-      "timerSeconds": 90,
-      "boardId": "EASY_001_90",
-      "economy": {
-        "entryCostCoins": 0,
-        "rewardCoinsBase": 14,
-        "rewardCoinsPerStar": 7,
-        "unlockNextCostCoins": 25
-      },
-      "clearRequirements": {
-        "minStars": 1,
-        "altUnlockCoins": 25
-      }
+      "levelId": "L003_C",
+      "letter": "C",
+      "sequence": 3,
+      "boardRef": { "type": "boardPoolId", "value": "LEGACY_C_POOL" },
+      "difficulty": "EASY",
+      "timer": 60,
+      "assets": { "day": "C_day_2x", "night": "C_night_2x" },
+      "mapTile": { "x": 0.53, "y": 0.78 },
+      "unlock": { "requiresLevelId": "L002_B", "bypassCostCoins": 40 }
+    },
+    {
+      "levelId": "L004_D",
+      "letter": "D",
+      "sequence": 4,
+      "boardRef": { "type": "boardPoolId", "value": "LEGACY_D_POOL" },
+      "difficulty": "EASY",
+      "timer": 60,
+      "assets": { "day": "D_day_2x", "night": "D_night_2x" },
+      "mapTile": { "x": 0.58, "y": 0.73 },
+      "unlock": { "requiresLevelId": "L003_C", "bypassCostCoins": 40 }
+    },
+    {
+      "levelId": "L005_E",
+      "letter": "E",
+      "sequence": 5,
+      "boardRef": { "type": "boardPoolId", "value": "LEGACY_E_POOL" },
+      "difficulty": "EASY",
+      "timer": 60,
+      "assets": { "day": "E_day_2x", "night": "E_night_2x" },
+      "mapTile": { "x": 0.62, "y": 0.69 },
+      "unlock": { "requiresLevelId": "L004_D", "bypassCostCoins": 40 }
+    },
+    {
+      "levelId": "L006_F",
+      "letter": "F",
+      "sequence": 6,
+      "boardRef": { "type": "boardPoolId", "value": "LEGACY_F_POOL" },
+      "difficulty": "EASY",
+      "timer": 60,
+      "assets": { "day": "F_day_2x", "night": "F_night_2x" },
+      "mapTile": { "x": 0.66, "y": 0.64 },
+      "unlock": { "requiresLevelId": "L005_E", "bypassCostCoins": 40 }
     }
-  ],
-  "path": {
-    "nodes": [
-      { "levelId": "L001_A1", "next": "L002_A2" },
-      { "levelId": "L002_A2", "next": "L003_A3" }
-    ]
-  }
-}
 
+    // Continue L007_G ... L050_... once you finalize 50-level mapping + coordinates
+  ]
+}
