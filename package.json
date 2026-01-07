@@ -1,1 +1,12 @@
-
+{
+  "name": "wordmuster-content",
+  "private": true,
+  "type": "commonjs",
+  "devDependencies": {
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1"
+  },
+  "scripts": {
+    "validate:challenge": "node scripts/validate/validate-challenge-data.js"
+  }
+}
