@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://wordmuster.dev/schemas/challengeSettings.schema.json",
-  "title": "Challenge Settings Schema (v1.1 - matches challengeSettings.json)",
+  "title": "Challenge Settings Schema (v1.1.1 - matches challengeSettings.json)",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "dataVersion",
     "generatedOn",
     "sourceLexiconVersion",
+    "language",
     "difficultyBands",
     "timers",
     "scoring",
@@ -17,6 +18,7 @@
     "dataVersion": { "type": "string", "minLength": 1 },
     "generatedOn": { "type": "string", "format": "date-time" },
     "sourceLexiconVersion": { "type": "string", "minLength": 1 },
+    "language": { "type": "string", "enum": ["EN"] },
 
     "difficultyBands": {
       "type": "array",
@@ -29,7 +31,6 @@
           "displayName",
           "gradeHint",
           "rackLetterCount",
-          "lettersCount",
           "allowLetterReuseByTimer"
         ],
         "properties": {
@@ -37,8 +38,6 @@
           "displayName": { "type": "string", "minLength": 1 },
           "gradeHint": { "type": "string", "minLength": 1 },
           "rackLetterCount": { "type": "integer", "minimum": 5, "maximum": 14 },
-          "lettersCount": { "type": "integer", "minimum": 5, "maximum": 14 },
-          "allowLetterReuse": { "type": "boolean" },
           "allowLetterReuseByTimer": {
             "type": "object",
             "additionalProperties": false,
@@ -90,6 +89,7 @@
             "lengthBonus": {
               "type": "object",
               "additionalProperties": false,
+              "required": ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
               "properties": {
                 "3": { "type": "integer" },
                 "4": { "type": "integer" },
@@ -136,7 +136,7 @@
               "label": { "type": "string", "minLength": 1 },
               "numerator": { "type": "string", "minLength": 1 },
               "denominator": { "type": "string", "minLength": 1 },
-              "csvField": { "type": "string", "minLength": 1 },
+              "csvField": { "type": "string", "enum": ["totalPossibleWordsCsv", "targetWordsCsv"] },
               "optional": { "type": "boolean" }
             }
           }
