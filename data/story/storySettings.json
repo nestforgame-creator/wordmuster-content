@@ -1,1 +1,30 @@
+{
+  "dataVersion": "1.0.0",
+  "generatedOn": "2026-01-07T00:00:00Z",
+  "sourceLexiconVersion": "f0ed269b920a",
+  "language": "EN",
+
+  "mode": "story",
+
+  "textTokens": {
+    "tokenFormat": "BRACKET_UPPER",
+    "example": "[HARE]"
+  },
+
+  "rules": {
+    "minWordLength": 3,
+    "allWordsMustExistInLexicon": true,
+
+    "letterUse": {
+      "type": "FREQUENCY_LIMITED",
+      "notes": "A letter can be used only as many times as it appears in rackSeedLetters."
+    }
+  },
+
+  "defaults": {
+    "targetTimeSeconds": 60,
+    "targetWordsBase": 10,
+    "stars": { "star1Percent": 50, "star2Percent": 75, "star3Percent": 90 }
+  }
+}
 
