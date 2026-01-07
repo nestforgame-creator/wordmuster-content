@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://wordmuster.dev/schemas/legacyMap.schema.json",
-  "title": "Legacy Map Schema",
+  "title": "Legacy Map Schema (Nodes + Sublevels)",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -9,16 +9,19 @@
     "generatedOn",
     "mapId",
     "mode",
+    "variant",
     "assets",
     "rendering",
     "unlockModel",
-    "levels"
+    "nodes"
   ],
   "properties": {
     "dataVersion": { "type": "string", "minLength": 1 },
     "generatedOn": { "type": "string", "format": "date-time" },
     "mapId": { "type": "string", "minLength": 1 },
-    "mode": { "type": "string", "enum": ["challenge_legacy"] },
+
+    "mode": { "type": "string", "enum": ["challenge"] },
+    "variant": { "type": "string", "enum": ["legacy"] },
 
     "assets": {
       "type": "object",
@@ -36,14 +39,21 @@
             "night_2x": { "type": "string", "minLength": 1 }
           }
         },
-
         "letters": {
           "type": "object",
-          "minProperties": 1,
-          "propertyNames": { "pattern": "^[A-Z]_(day|night)_(1x|2x)$" },
-          "additionalProperties": { "type": "string", "minLength": 1 }
+          "additionalProperties": false,
+          "required": ["lettersRoot", "filePattern", "themes"],
+          "properties": {
+            "lettersRoot": { "type": "string", "minLength": 1 },
+            "filePattern": { "type": "string", "minLength": 1 },
+            "themes": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "type": "string", "enum": ["day", "night"] }
+            }
+          }
         },
-
         "ui": {
           "type": "object",
           "additionalProperties": false,
@@ -84,75 +94,57 @@
     "unlockModel": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["defaultRule", "economy"],
+      "required": ["nodeRule", "subLevelRule", "economyDefaults"],
       "properties": {
-        "defaultRule": {
+        "nodeRule": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["requiresPreviousLevel", "minStarsToUnlockNext", "coinBypassEnabled"],
+          "required": ["requiresPreviousNode", "minStarsToUnlockNextNode", "coinBypassEnabled"],
           "properties": {
-            "requiresPreviousLevel": { "type": "boolean" },
-            "minStarsToUnlockNext": { "type": "integer", "minimum": 0, "maximum": 3 },
+            "requiresPreviousNode": { "type": "boolean" },
+            "minStarsToUnlockNextNode": { "type": "integer", "minimum": 0, "maximum": 3 },
             "coinBypassEnabled": { "type": "boolean" }
           }
         },
-        "economy": {
+        "subLevelRule": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["entryCostCoins", "unlockBypassCostCoins", "rewardCoinsOnComplete"],
+          "required": ["requiresPreviousSubLevel", "minStarsToUnlockNextSubLevel"],
+          "properties": {
+            "requiresPreviousSubLevel": { "type": "boolean" },
+            "minStarsToUnlockNextSubLevel": { "type": "integer", "minimum": 0, "maximum": 3 }
+          }
+        },
+        "economyDefaults": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "entryCostCoins",
+            "nodeUnlockBypassCostCoins",
+            "subLevelUnlockBypassCostCoins",
+            "rewardCoinsOnComplete"
+          ],
           "properties": {
             "entryCostCoins": { "type": "integer", "minimum": 0 },
-            "unlockBypassCostCoins": { "type": "integer", "minimum": 0 },
+            "nodeUnlockBypassCostCoins": { "type": "integer", "minimum": 0 },
+            "subLevelUnlockBypassCostCoins": { "type": "integer", "minimum": 0 },
             "rewardCoinsOnComplete": { "type": "integer", "minimum": 0 }
           }
         }
       }
     },
 
-    "levels": {
+    "nodes": {
       "type": "array",
       "minItems": 1,
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "levelId",
-          "letter",
-          "sequence",
-          "boardRef",
-          "difficulty",
-          "timer",
-          "assets",
-          "mapTile",
-          "unlock"
-        ],
+        "required": ["nodeId", "order", "letter", "mapTile", "unlock", "subLevels"],
         "properties": {
-          "levelId": { "type": "string", "minLength": 1 },
+          "nodeId": { "type": "string", "pattern": "^[A-Z]$" },
+          "order": { "type": "integer", "minimum": 1 },
           "letter": { "type": "string", "pattern": "^[A-Z]$" },
-          "sequence": { "type": "integer", "minimum": 1 },
-
-          "boardRef": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["type", "value"],
-            "properties": {
-              "type": { "type": "string", "enum": ["boardPoolId", "boardId"] },
-              "value": { "type": "string", "minLength": 1 }
-            }
-          },
-
-          "difficulty": { "type": "string", "enum": ["EASY", "MEDIUM", "HARD", "PRO"] },
-          "timer": { "type": "integer", "enum": [30, 60, 90] },
-
-          "assets": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": ["day", "night"],
-            "properties": {
-              "day": { "type": "string", "minLength": 1 },
-              "night": { "type": "string", "minLength": 1 }
-            }
-          },
 
           "mapTile": {
             "type": "object",
@@ -167,10 +159,45 @@
           "unlock": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["requiresLevelId", "bypassCostCoins"],
+            "required": ["requiresNodeId", "bypassCostCoins"],
             "properties": {
-              "requiresLevelId": { "type": ["string", "null"], "minLength": 1 },
+              "requiresNodeId": { "type": ["string", "null"], "pattern": "^[A-Z]$" },
               "bypassCostCoins": { "type": "integer", "minimum": 0 }
+            }
+          },
+
+          "subLevels": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["subLevelId", "sequence", "difficultyBand", "timerSeconds", "boardRef", "unlock"],
+              "properties": {
+                "subLevelId": { "type": "string", "pattern": "^[A-Z][0-9]{2}$" },
+                "sequence": { "type": "integer", "minimum": 1 },
+                "difficultyBand": { "type": "string", "enum": ["EASY", "MEDIUM", "HARD", "PRO"] },
+                "timerSeconds": { "type": "integer", "enum": [30, 60, 90] },
+
+                "boardRef": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["type", "difficultyBand", "timerSeconds"],
+                  "properties": {
+                    "type": { "type": "string", "enum": ["filter"] },
+                    "difficultyBand": { "type": "string", "enum": ["EASY", "MEDIUM", "HARD", "PRO"] },
+                    "timerSeconds": { "type": "integer", "enum": [30, 60, 90] }
+                  }
+                },
+
+                "unlock": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["requiresSubLevelId"],
+                  "properties": {
+                    "requiresSubLevelId": { "type": ["string", "null"], "pattern": "^[A-Z][0-9]{2}$" }
+                  }
+                }
+              }
             }
           }
         }
@@ -178,4 +205,3 @@
     }
   }
 }
-
