@@ -1,1 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wordmuster.dev/schemas/storySettings.schema.json",
+  "title": "Story Settings Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dataVersion", "generatedOn", "sourceLexiconVersion", "language", "mode", "textTokens", "rules", "defaults"],
+  "properties": {
+    "dataVersion": { "type": "string", "minLength": 1 },
+    "generatedOn": { "type": "string", "format": "date-time" },
+    "sourceLexiconVersion": { "type": "string", "minLength": 1 },
+    "language": { "type": "string", "enum": ["EN"] },
+    "mode": { "type": "string", "enum": ["story"] },
+
+    "textTokens": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tokenFormat", "example"],
+      "properties": {
+        "tokenFormat": { "type": "string", "enum": ["BRACKET_UPPER"] },
+        "example": { "type": "string", "minLength": 3 }
+      }
+    },
+
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minWordLength", "allWordsMustExistInLexicon", "letterUse"],
+      "properties": {
+        "minWordLength": { "type": "integer", "minimum": 1, "maximum": 20 },
+        "allWordsMustExistInLexicon": { "type": "boolean" },
+        "letterUse": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "notes"],
+          "properties": {
+            "type": { "type": "string", "enum": ["FREQUENCY_LIMITED"] },
+            "notes": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["targetTimeSeconds", "targetWordsBase", "stars"],
+      "properties": {
+        "targetTimeSeconds": { "type": "integer", "minimum": 10, "maximum": 600 },
+        "targetWordsBase": { "type": "integer", "minimum": 1, "maximum": 200 },
+        "stars": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["star1Percent", "star2Percent", "star3Percent"],
+          "properties": {
+            "star1Percent": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "star2Percent": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "star3Percent": { "type": "integer", "minimum": 0, "maximum": 100 }
+          }
+        }
+      }
+    }
+  }
+}
 
