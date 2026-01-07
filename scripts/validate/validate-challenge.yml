@@ -1,9 +1,18 @@
 name: Validate Challenge Data
 
 on:
-  pull_request:
   push:
-    branches: ["main"]
+    paths:
+      - "data/challenge/**"
+      - "scripts/validate/**"
+      - "package.json"
+      - "package-lock.json"
+  pull_request:
+    paths:
+      - "data/challenge/**"
+      - "scripts/validate/**"
+      - "package.json"
+      - "package-lock.json"
 
 jobs:
   validate:
@@ -20,6 +29,5 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Validate JSON data
+      - name: Validate Challenge JSON
         run: npm run validate:challenge
-
