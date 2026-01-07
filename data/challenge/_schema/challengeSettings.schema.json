@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://wordmuster.dev/schemas/challengeSettings.schema.json",
-  "title": "Challenge Settings Schema (v1.1.1 - matches challengeSettings.json)",
+  "title": "Challenge Settings Schema (matches challengeSettings.json)",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -80,6 +80,7 @@
           "enum": ["FOUND_OVER_TOTAL_POSSIBLE", "FOUND_OVER_TARGET"]
         },
         "rawScoreEnabled": { "type": "boolean" },
+
         "rawScore": {
           "type": "object",
           "additionalProperties": false,
@@ -114,6 +115,7 @@
             }
           }
         },
+
         "stars": {
           "type": "object",
           "additionalProperties": false,
@@ -124,6 +126,7 @@
             "star3Percent": { "type": "integer", "minimum": 0, "maximum": 100 }
           }
         },
+
         "completionModes": {
           "type": "array",
           "minItems": 1,
@@ -136,7 +139,7 @@
               "label": { "type": "string", "minLength": 1 },
               "numerator": { "type": "string", "minLength": 1 },
               "denominator": { "type": "string", "minLength": 1 },
-              "csvField": { "type": "string", "enum": ["totalPossibleWordsCsv", "targetWordsCsv"] },
+              "csvField": { "type": "string", "minLength": 1 },
               "optional": { "type": "boolean" }
             }
           }
