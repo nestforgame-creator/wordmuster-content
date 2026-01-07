@@ -1,1 +1,87 @@
-
+{
+  "dataVersion": "1.0.1",
+  "generatedOn": "2026-01-07T12:00:00Z",
+  "sourceLexiconVersion": "story_lexicon_1.0.1",
+  "collections": [
+    {
+      "collectionCode": "AESOP",
+      "title": "Aesop's Fables",
+      "description": "Classic animal fables with moral lessons and simple vocabulary.",
+      "language": "EN",
+      "iconKey": "aesop_icon",
+      "isUnlockedByDefault": true,
+      "minChaptersToUnlock": 0,
+      "ageBand": "5 to 12 years",
+      "difficultyBand": "MEDIUM",
+      "coverImageUrl": "https://yourcdn.com/collections/aesop.png",
+      "displayOrder": 1,
+      "isActive": true
+    },
+    {
+      "collectionCode": "FAIRY",
+      "title": "Fairy Tales",
+      "description": "Timeless fairy tales from classic authors",
+      "language": "EN",
+      "isUnlockedByDefault": false,
+      "minChaptersToUnlock": 16,
+      "coverImageUrl": "https://yourcdn.com/collections/fairytales.png",
+      "displayOrder": 2,
+      "isActive": true
+    },
+    {
+      "collectionCode": "PANCHA",
+      "title": "Panchatantra",
+      "description": "Ancient Indian wisdom stories and animal fables",
+      "language": "EN",
+      "isUnlockedByDefault": false,
+      "minChaptersToUnlock": 32,
+      "coverImageUrl": "https://yourcdn.com/collections/panchatantra.png",
+      "displayOrder": 3,
+      "isActive": true
+    },
+    {
+      "collectionCode": "TALES",
+      "title": "Tales",
+      "description": "Well-known folk and storybook tales from around the world",
+      "language": "EN",
+      "isUnlockedByDefault": false,
+      "minChaptersToUnlock": 48,
+      "coverImageUrl": "https://yourcdn.com/collections/tales.png",
+      "displayOrder": 4,
+      "isActive": true
+    },
+    {
+      "collectionCode": "WORLD",
+      "title": "Worldwide Fables",
+      "description": "Short moral stories and legends from many cultures",
+      "language": "EN",
+      "isUnlockedByDefault": false,
+      "minChaptersToUnlock": 64,
+      "coverImageUrl": "https://yourcdn.com/collections/worldwide.png",
+      "displayOrder": 5,
+      "isActive": true
+    },
+    {
+      "collectionCode": "STORIES",
+      "title": "Stories",
+      "description": "Classic short stories from famous authors",
+      "language": "EN",
+      "isUnlockedByDefault": false,
+      "minChaptersToUnlock": 80,
+      "coverImageUrl": "https://yourcdn.com/collections/stories.png",
+      "displayOrder": 6,
+      "isActive": true
+    },
+    {
+      "collectionCode": "POEMS",
+      "title": "Poems",
+      "description": "Narrative poems and themed verses adapted into story paths",
+      "language": "EN",
+      "isUnlockedByDefault": false,
+      "minChaptersToUnlock": 96,
+      "coverImageUrl": "https://yourcdn.com/collections/poems.png",
+      "displayOrder": 7,
+      "isActive": true
+    }
+  ]
+}
