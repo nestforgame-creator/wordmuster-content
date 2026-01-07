@@ -1,1 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wordmuster.dev/schemas/chapters.schema.json",
+  "title": "Story Chapters Schema",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "chapterId",
+      "storyId",
+      "collectionCode",
+      "chapterIndex",
+      "title",
+      "shortDescription",
+      "chapterTextTemplate",
+      "chapterNodeImageUrl",
+      "targetTimeSeconds",
+      "targetWordsBase",
+      "star1Percent",
+      "star2Percent",
+      "star3Percent",
+      "isActive"
+    ],
+    "properties": {
+      "chapterId": { "type": "string", "minLength": 1 },
+      "storyId": { "type": "string", "minLength": 1 },
+      "collectionCode": { "type": "string", "minLength": 1 },
+      "chapterIndex": { "type": "integer", "minimum": 1 },
+
+      "title": { "type": "string", "minLength": 1 },
+      "shortDescription": { "type": "string", "minLength": 1 },
+      "chapterTextTemplate": { "type": "string", "minLength": 10 },
+
+      "chapterNodeImageUrl": { "type": "string", "minLength": 1 },
+
+      "targetTimeSeconds": { "type": "integer", "minimum": 10, "maximum": 600 },
+      "targetWordsBase": { "type": "integer", "minimum": 1, "maximum": 200 },
+
+      "star1Percent": { "type": "integer", "minimum": 0, "maximum": 100 },
+      "star2Percent": { "type": "integer", "minimum": 0, "maximum": 100 },
+      "star3Percent": { "type": "integer", "minimum": 0, "maximum": 100 },
+
+      "isActive": { "type": "boolean" }
+    }
+  }
+}
 
