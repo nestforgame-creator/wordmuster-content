@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://wordmuster.dev/schemas/challengeSettings.schema.json",
-  "title": "Challenge Settings Schema (v1.1.x)",
+  "title": "Challenge Settings Schema",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -15,11 +15,24 @@
     "hints"
   ],
   "properties": {
-    "dataVersion": { "type": "string", "minLength": 1 },
-    "generatedOn": { "type": "string", "format": "date-time" },
-    "sourceLexiconVersion": { "type": "string", "minLength": 1 },
-    "language": { "type": "string", "enum": ["EN"] },
-
+    "dataVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generatedOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceLexiconVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "type": "string",
+      "enum": [
+        "EN"
+      ]
+    },
     "difficultyBands": {
       "type": "array",
       "minItems": 1,
@@ -31,34 +44,73 @@
           "displayName",
           "gradeHint",
           "rackLetterCount",
+          "lettersCount",
           "allowLetterReuseByTimer"
         ],
         "properties": {
-          "id": { "type": "string", "enum": ["EASY", "MEDIUM", "HARD", "PRO"] },
-          "displayName": { "type": "string", "minLength": 1 },
-          "gradeHint": { "type": "string", "minLength": 1 },
-          "rackLetterCount": { "type": "integer", "minimum": 5, "maximum": 14 },
+          "id": {
+            "type": "string",
+            "enum": [
+              "EASY",
+              "MEDIUM",
+              "HARD",
+              "PRO"
+            ]
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "gradeHint": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rackLetterCount": {
+            "type": "integer",
+            "minimum": 5,
+            "maximum": 14
+          },
+          "lettersCount": {
+            "type": "integer",
+            "minimum": 5,
+            "maximum": 14
+          },
           "allowLetterReuseByTimer": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["30", "60", "90"],
+            "required": [
+              "30",
+              "60",
+              "90"
+            ],
             "properties": {
-              "30": { "type": "boolean" },
-              "60": { "type": "boolean" },
-              "90": { "type": "boolean" }
+              "30": {
+                "type": "boolean"
+              },
+              "60": {
+                "type": "boolean"
+              },
+              "90": {
+                "type": "boolean"
+              }
             }
           }
         }
       }
     },
-
     "timers": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": { "type": "integer", "enum": [30, 60, 90] }
+      "items": {
+        "type": "integer",
+        "enum": [
+          30,
+          60,
+          90
+        ]
+      }
     },
-
     "scoring": {
       "type": "object",
       "additionalProperties": false,
@@ -66,50 +118,64 @@
         "completionPercentMode",
         "altCompletionPercentMode",
         "rawScoreEnabled",
-        "rawScore",
         "stars",
         "completionModes"
       ],
       "properties": {
         "completionPercentMode": {
           "type": "string",
-          "enum": ["FOUND_OVER_TOTAL_POSSIBLE", "FOUND_OVER_TARGET"]
+          "enum": [
+            "FOUND_OVER_TOTAL_POSSIBLE"
+          ]
         },
         "altCompletionPercentMode": {
           "type": "string",
-          "enum": ["FOUND_OVER_TOTAL_POSSIBLE", "FOUND_OVER_TARGET"]
+          "enum": [
+            "FOUND_OVER_TARGET"
+          ]
         },
-        "rawScoreEnabled": { "type": "boolean" },
+        "rawScoreEnabled": {
+          "type": "boolean"
+        },
         "rawScore": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["basePerWord", "lengthBonus", "perfectRoundBonus"],
+          "required": [
+            "basePerWord",
+            "lengthBonus",
+            "perfectRoundBonus"
+          ],
           "properties": {
-            "basePerWord": { "type": "integer", "minimum": 0 },
+            "basePerWord": {
+              "type": "integer",
+              "minimum": 0
+            },
             "lengthBonus": {
               "type": "object",
-              "additionalProperties": false,
-              "required": ["3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-              "properties": {
-                "3": { "type": "integer", "minimum": 0 },
-                "4": { "type": "integer", "minimum": 0 },
-                "5": { "type": "integer", "minimum": 0 },
-                "6": { "type": "integer", "minimum": 0 },
-                "7": { "type": "integer", "minimum": 0 },
-                "8": { "type": "integer", "minimum": 0 },
-                "9": { "type": "integer", "minimum": 0 },
-                "10": { "type": "integer", "minimum": 0 },
-                "11": { "type": "integer", "minimum": 0 },
-                "12": { "type": "integer", "minimum": 0 }
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 0
               }
             },
             "perfectRoundBonus": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["type", "value"],
+              "required": [
+                "type",
+                "value"
+              ],
               "properties": {
-                "type": { "type": "string", "enum": ["PERCENT", "FLAT"] },
-                "value": { "type": "integer", "minimum": 0 }
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "PERCENT",
+                    "FLAT"
+                  ]
+                },
+                "value": {
+                  "type": "number",
+                  "minimum": 0
+                }
               }
             }
           }
@@ -117,11 +183,27 @@
         "stars": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["star1Percent", "star2Percent", "star3Percent"],
+          "required": [
+            "star1Percent",
+            "star2Percent",
+            "star3Percent"
+          ],
           "properties": {
-            "star1Percent": { "type": "integer", "minimum": 0, "maximum": 100 },
-            "star2Percent": { "type": "integer", "minimum": 0, "maximum": 100 },
-            "star3Percent": { "type": "integer", "minimum": 0, "maximum": 100 }
+            "star1Percent": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "star2Percent": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "star3Percent": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
           }
         },
         "completionModes": {
@@ -130,48 +212,102 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["id", "label", "numerator", "denominator", "csvField"],
+            "required": [
+              "id",
+              "label",
+              "numerator",
+              "denominator",
+              "csvField"
+            ],
             "properties": {
-              "id": { "type": "string", "minLength": 1 },
-              "label": { "type": "string", "minLength": 1 },
-              "numerator": { "type": "string", "minLength": 1 },
-              "denominator": { "type": "string", "minLength": 1 },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "numerator": {
+                "type": "string",
+                "minLength": 1
+              },
+              "denominator": {
+                "type": "string",
+                "minLength": 1
+              },
               "csvField": {
                 "type": "string",
-                "enum": ["totalPossibleWordsCsv", "targetWordsCsv"]
+                "enum": [
+                  "totalPossibleWordsCsv",
+                  "targetWordsCsv"
+                ]
               },
-              "optional": { "type": "boolean" }
+              "optional": {
+                "type": "boolean"
+              }
             }
           }
         }
       }
     },
-
     "hints": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["maxHintsPerRound", "coinOnly", "options"],
+      "required": [
+        "maxHintsPerRound",
+        "coinOnly",
+        "options"
+      ],
       "properties": {
-        "maxHintsPerRound": { "type": "integer", "minimum": 0, "maximum": 10 },
-        "coinOnly": { "type": "boolean" },
+        "maxHintsPerRound": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "coinOnly": {
+          "type": "boolean"
+        },
         "options": {
           "type": "array",
           "minItems": 1,
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["id", "coinCost", "reveals"],
+            "required": [
+              "id",
+              "coinCost",
+              "reveals"
+            ],
             "properties": {
-              "id": { "type": "string", "minLength": 1 },
-              "coinCost": { "type": "integer", "minimum": 0 },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "coinCost": {
+                "type": "integer",
+                "minimum": 0
+              },
               "reveals": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": ["firstLetter", "randomLetters", "length"],
+                "required": [
+                  "firstLetter",
+                  "randomLetters",
+                  "length"
+                ],
                 "properties": {
-                  "firstLetter": { "type": "boolean" },
-                  "randomLetters": { "type": "integer", "minimum": 0, "maximum": 10 },
-                  "length": { "type": "boolean" }
+                  "firstLetter": {
+                    "type": "boolean"
+                  },
+                  "randomLetters": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 6
+                  },
+                  "length": {
+                    "type": "boolean"
+                  }
                 }
               }
             }
