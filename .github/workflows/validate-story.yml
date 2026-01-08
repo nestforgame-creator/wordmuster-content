@@ -1,1 +1,37 @@
+name: Validate Story Data
+
+on:
+  pull_request:
+    paths:
+      - "data/story/**"
+      - "data/challenge/lexicon.json"
+      - "scripts/validate/**"
+      - "package.json"
+  push:
+    branches: ["main"]
+    paths:
+      - "data/story/**"
+      - "data/challenge/lexicon.json"
+      - "scripts/validate/**"
+      - "package.json"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install
+        run: npm ci
+
+      - name: Validate Story
+        run: npm run validate:story
 
