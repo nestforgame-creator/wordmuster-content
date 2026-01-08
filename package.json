@@ -3,7 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "validate:challenge": "node scripts/validate/validate-challenge-data.js && node scripts/validate/validate-boards-words.js"
+    "validate:challenge": "node scripts/validate/validate-challenge-data.js && node scripts/validate/validate-boards-words.js",
+    "validate:story": "node scripts/validate/validate-story-data.js && node scripts/validate/validate-story-words.js",
+    "validate:all": "npm run validate:challenge && npm run validate:story"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
