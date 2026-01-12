@@ -33,9 +33,7 @@ function rackCounts(letters) {
 
 function canFormWordFromRack(word, rackCountMap) {
   const needed = new Map();
-  for (const ch of word) {
-    needed.set(ch, (needed.get(ch) || 0) + 1);
-  }
+  for (const ch of word) needed.set(ch, (needed.get(ch) || 0) + 1);
   for (const [ch, cnt] of needed.entries()) {
     if ((rackCountMap.get(ch) || 0) < cnt) return false;
   }
@@ -48,6 +46,26 @@ function extractBracketWords(chapterTextTemplate) {
   return matches.map(m => normalizeWord(m[1]));
 }
 
+function loadLexiconWords(filePath) {
+  const lex = loadJson(filePath);
+
+  // Supported formats:
+  // A) { words: ["WORD", ...] }   <-- preferred
+  // B) { lexicon: ["WORD", ...] } <-- legacy
+  // C) ["WORD", ...]              <-- legacy
+  let arr = null;
+
+  if (Array.isArray(lex)) arr = lex;
+  else if (lex && Array.isArray(lex.words)) arr = lex.words;
+  else if (lex && Array.isArray(lex.lexicon)) arr = lex.lexicon;
+
+  if (!Array.isArray(arr)) {
+    throw new Error("lexicon.json must be an array OR { words:[...] } OR { lexicon:[...] }");
+  }
+
+  return new Set(arr.map(w => normalizeWord(w)));
+}
+
 function main() {
   const repoRoot = path.resolve(__dirname, "../../");
   const storyDir = path.join(repoRoot, "data", "story");
@@ -57,13 +75,7 @@ function main() {
   const chapterWords = loadJson(path.join(storyDir, "chapterWords.json"));
 
   // Shared lexicon (Challenge)
-  const lex = loadJson(path.join(challengeDir, "lexicon.json"));
-  const lexArr = Array.isArray(lex) ? lex : lex.lexicon;
-  if (!Array.isArray(lexArr)) {
-    console.error("❌ data/challenge/lexicon.json must be an array or { lexicon: [...] }");
-    process.exit(1);
-  }
-  const lexSet = new Set(lexArr.map(w => normalizeWord(w)));
+  const lexSet = loadLexiconWords(path.join(challengeDir, "lexicon.json"));
 
   // Index chapters by chapterId
   const chapterById = new Map();
@@ -77,14 +89,14 @@ function main() {
     const rackMap = rackCounts(rack);
     const words = splitCsv(row.targetWordsCsv);
 
-    // 1) Must have at least 12 target words
+    // 1) Must have at least 12 words (12 target + optional bonus)
     if (words.length < 12) {
       console.error(`❌ chapterWords[${idx}] (${chapterId}) has <12 words in targetWordsCsv`);
       issues++;
       return;
     }
 
-    // 2) Placeholder rule: exactly 12 bracketed placeholders, and they must match the first 12 words
+    // 2) Placeholder rule: exactly 12 bracket placeholders, matching first 12 target words
     const ch = chapterById.get(chapterId);
     if (!ch) {
       console.error(`❌ chapterWords[${idx}] refers to missing chapterId: ${chapterId}`);
@@ -134,24 +146,3 @@ function main() {
 }
 
 main();
-
-function loadLexiconWords(filePath) {
-  const lex = loadJson(filePath);
-
-  // Supported formats:
-  // A) { words: ["WORD", ...] }   <-- your current contract
-  // B) { lexicon: ["WORD", ...] } <-- legacy
-  // C) ["WORD", ...]             <-- legacy
-
-  let arr = null;
-  if (Array.isArray(lex)) arr = lex;
-  else if (Array.isArray(lex.words)) arr = lex.words;
-  else if (Array.isArray(lex.lexicon)) arr = lex.lexicon;
-
-  if (!Array.isArray(arr)) {
-    throw new Error("lexicon.json must be an array OR { words:[...] } OR { lexicon:[...] }");
-  }
-
-  return new Set(arr.map(w => String(w).trim().toUpperCase()));
-}
-
