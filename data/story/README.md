@@ -5,6 +5,7 @@ All files here are treated as **immutable inputs** by the runtime.
 
 > Story Mode shares the same lexicon as Challenge Mode:
 > `data/challenge/lexicon.json`
+> Story does not maintain its own lexicon file.
 
 ---
 
