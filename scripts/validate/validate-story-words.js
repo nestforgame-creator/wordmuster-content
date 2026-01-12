@@ -135,3 +135,23 @@ function main() {
 
 main();
 
+function loadLexiconWords(filePath) {
+  const lex = loadJson(filePath);
+
+  // Supported formats:
+  // A) { words: ["WORD", ...] }   <-- your current contract
+  // B) { lexicon: ["WORD", ...] } <-- legacy
+  // C) ["WORD", ...]             <-- legacy
+
+  let arr = null;
+  if (Array.isArray(lex)) arr = lex;
+  else if (Array.isArray(lex.words)) arr = lex.words;
+  else if (Array.isArray(lex.lexicon)) arr = lex.lexicon;
+
+  if (!Array.isArray(arr)) {
+    throw new Error("lexicon.json must be an array OR { words:[...] } OR { lexicon:[...] }");
+  }
+
+  return new Set(arr.map(w => String(w).trim().toUpperCase()));
+}
+
