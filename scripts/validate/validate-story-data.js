@@ -26,48 +26,60 @@ function validateFile(ajv, schemaPath, dataPath) {
 
 function main() {
   const repoRoot = path.resolve(__dirname, "../../");
-  const dataDir = path.join(repoRoot, "data", "story");
-  const schemaDir = path.join(dataDir, "_schema");
+
+  // Story data + schemas
+  const storyDir = path.join(repoRoot, "data", "story");
+  const storySchemaDir = path.join(storyDir, "_schema");
+
+  // Shared lexicon (Challenge)
+  const challengeDir = path.join(repoRoot, "data", "challenge");
+  const challengeSchemaDir = path.join(challengeDir, "_schema");
 
   const ajv = new Ajv({ allErrors: true, strict: false });
   addFormats(ajv);
 
-  // Validate Story Mode JSON files against schemas
+  // 0) Validate shared lexicon FIRST (challenge)
+  // If you have lexicon.schema.json in challenge/_schema, validate it.
+  // If you don't, remove this block safely.
   validateFile(
     ajv,
-    path.join(schemaDir, "lexicon.schema.json"),
-    path.join(dataDir, "lexicon.json")
+    path.join(challengeSchemaDir, "lexicon.schema.json"),
+    path.join(challengeDir, "lexicon.json")
+  );
+
+  // 1) Validate Story Mode JSON files against Story schemas
+  validateFile(
+    ajv,
+    path.join(storySchemaDir, "collections.schema.json"),
+    path.join(storyDir, "collections.json")
   );
 
   validateFile(
     ajv,
-    path.join(schemaDir, "collections.schema.json"),
-    path.join(dataDir, "collections.json")
+    path.join(storySchemaDir, "stories.schema.json"),
+    path.join(storyDir, "stories.json")
   );
 
   validateFile(
     ajv,
-    path.join(schemaDir, "stories.schema.json"),
-    path.join(dataDir, "stories.json")
+    path.join(storySchemaDir, "chapters.schema.json"),
+    path.join(storyDir, "chapters.json")
   );
 
   validateFile(
     ajv,
-    path.join(schemaDir, "chapters.schema.json"),
-    path.join(dataDir, "chapters.json")
+    path.join(storySchemaDir, "chapterWords.schema.json"),
+    path.join(storyDir, "chapterWords.json")
   );
 
-  validateFile(
-    ajv,
-    path.join(schemaDir, "chapterWords.schema.json"),
-    path.join(dataDir, "chapterWords.json")
-  );
-
-  validateFile(
-    ajv,
-    path.join(schemaDir, "storySettings.schema.json"),
-    path.join(dataDir, "storySettings.json")
-  );
+  // Optional: storySettings if you use it
+  const storySettingsPath = path.join(storyDir, "storySettings.json");
+  const storySettingsSchemaPath = path.join(storySchemaDir, "storySettings.schema.json");
+  if (fs.existsSync(storySettingsPath) && fs.existsSync(storySettingsSchemaPath)) {
+    validateFile(ajv, storySettingsSchemaPath, storySettingsPath);
+  } else {
+    console.log("ℹ️ Skipping storySettings validation (storySettings.json or schema not found).");
+  }
 
   console.log("\n✅ All Story Mode JSON validated successfully.\n");
 }
