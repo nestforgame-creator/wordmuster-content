@@ -24,8 +24,44 @@ function validateFile(ajv, schemaPath, dataPath) {
   console.log(`✅ Valid: ${path.basename(dataPath)}`);
 }
 
-function loadLexiconSet(dataDir) {
-  const lex = loadJson(path.join(dataDir, "lexicon.json"));
+function normalizeWord(w) {
+  return String(w || "").trim().toUpperCase();
+}
+
+function splitCsv(csv) {
+  return String(csv || "")
+    .split(",")
+    .map(w => normalizeWord(w))
+    .filter(Boolean);
+}
+
+function splitRackLetters(rackSeedLetters) {
+  return String(rackSeedLetters || "")
+    .trim()
+    .toUpperCase()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function rackCounts(letters) {
+  const m = new Map();
+  letters.forEach(ch => m.set(ch, (m.get(ch) || 0) + 1));
+  return m;
+}
+
+function canFormWordFromRack(word, rackCountMap) {
+  const needed = new Map();
+  for (const ch of word) {
+    needed.set(ch, (needed.get(ch) || 0) + 1);
+  }
+  for (const [ch, cnt] of needed.entries()) {
+    if ((rackCountMap.get(ch) || 0) < cnt) return false;
+  }
+  return true;
+}
+
+function loadLexiconSet(challengeDir) {
+  const lex = loadJson(path.join(challengeDir, "lexicon.json"));
 
   // Support both formats:
   // A) { lexicon: ["WORD", ...] }
@@ -33,100 +69,128 @@ function loadLexiconSet(dataDir) {
   const arr = Array.isArray(lex) ? lex : lex.lexicon;
 
   if (!Array.isArray(arr)) {
-    console.error("❌ lexicon.json must be an array or { lexicon: [...] }");
+    throw new Error("lexicon.json must be an array or { lexicon: [...] }");
+  }
+
+  return new Set(arr.map(w => normalizeWord(w)).filter(Boolean));
+}
+
+function validateBoardsWords({ challengeDir, lexSet }) {
+  const boardsPath = path.join(challengeDir, "challengeBoards.json");
+  const boardsJson = loadJson(boardsPath);
+
+  const boards = boardsJson.boards;
+  if (!Array.isArray(boards)) {
+    console.error("❌ challengeBoards.json must have a top-level { boards: [] } array");
     process.exit(1);
   }
 
-  return new Set(arr.map((w) => String(w).trim().toUpperCase()));
-}
+  let issues = 0;
 
-function validateCsvWords({ fileLabel, rows, csvField, lexSet }) {
-  let failCount = 0;
+  boards.forEach((b, idx) => {
+    const boardId = b.boardId || `board_${idx}`;
+    const rackLetters = splitRackLetters(b.rackSeedLetters);
+    const rackMap = rackCounts(rackLetters);
 
-  rows.forEach((row, idx) => {
-    const raw = row[csvField] || "";
-    const words = String(raw)
-      .split(",")
-      .map((w) => w.trim().toUpperCase())
-      .filter(Boolean);
+    const totalWords = splitCsv(b.totalPossibleWordsCsv);
+    const targetWords = splitCsv(b.targetWordsCsv);
 
-    words.forEach((w) => {
+    // (1) Count integrity checks
+    if (typeof b.totalPossibleWordsCount === "number" && totalWords.length !== b.totalPossibleWordsCount) {
+      console.error(`❌ ${boardId}: totalPossibleWordsCount=${b.totalPossibleWordsCount} but csv has ${totalWords.length}`);
+      issues++;
+    }
+    if (typeof b.targetWordsCount === "number" && targetWords.length !== b.targetWordsCount) {
+      console.error(`❌ ${boardId}: targetWordsCount=${b.targetWordsCount} but csv has ${targetWords.length}`);
+      issues++;
+    }
+
+    // (2) Duplicates
+    const totalSet = new Set(totalWords);
+    if (totalSet.size !== totalWords.length) {
+      console.error(`❌ ${boardId}: totalPossibleWordsCsv contains duplicates`);
+      issues++;
+    }
+    const targetSet = new Set(targetWords);
+    if (targetSet.size !== targetWords.length) {
+      console.error(`❌ ${boardId}: targetWordsCsv contains duplicates`);
+      issues++;
+    }
+
+    // (3) Target must be subset of totalPossible (recommended sanity rule)
+    targetWords.forEach(w => {
+      if (!totalSet.has(w)) {
+        console.error(`❌ ${boardId}: target word not in totalPossibleWordsCsv: "${w}"`);
+        issues++;
+      }
+    });
+
+    // (4) Validate ALL words (totalPossible + target) are:
+    // - length >= 3
+    // - in lexicon
+    // - rack-feasible
+    const allWords = [...new Set([...totalWords, ...targetWords])];
+
+    allWords.forEach(w => {
       if (w.length < 3) {
-        console.error(`❌ ${fileLabel}[${idx}] word too short (<3): "${w}"`);
-        failCount++;
+        console.error(`❌ ${boardId}: word too short (<3): "${w}"`);
+        issues++;
       }
       if (!lexSet.has(w)) {
-        console.error(`❌ ${fileLabel}[${idx}] word not in lexicon: "${w}"`);
-        failCount++;
+        console.error(`❌ ${boardId}: word not in lexicon: "${w}"`);
+        issues++;
+      }
+      if (!canFormWordFromRack(w, rackMap)) {
+        console.error(`❌ ${boardId}: word not formable from rack "${b.rackSeedLetters}": "${w}"`);
+        issues++;
       }
     });
   });
 
-  if (failCount > 0) {
-    console.error(
-      `\n❌ ${fileLabel}: lexicon/length validation failed (${failCount} issues).`
-    );
+  if (issues > 0) {
+    console.error(`\n❌ challengeBoards word validation failed (${issues} issues).`);
     process.exit(1);
   }
 
-  console.log(`✅ ${fileLabel}: lexicon + length≥3 checks passed (${csvField})`);
+  console.log("✅ challengeBoards: lexicon + length≥3 + rack feasibility + count checks passed.");
 }
 
 function main() {
   const repoRoot = path.resolve(__dirname, "../../");
-  const dataDir = path.join(repoRoot, "data", "challenge");
-  const schemaDir = path.join(dataDir, "_schema");
+  const challengeDir = path.join(repoRoot, "data", "challenge");
+  const schemaDir = path.join(challengeDir, "_schema");
 
   const ajv = new Ajv({ allErrors: true, strict: false });
   addFormats(ajv);
 
-  // 1) AJV schema validation
+  // 1) Schema validation first
   validateFile(
     ajv,
     path.join(schemaDir, "lexicon.schema.json"),
-    path.join(dataDir, "lexicon.json")
+    path.join(challengeDir, "lexicon.json")
   );
 
   validateFile(
     ajv,
     path.join(schemaDir, "challengeBoards.schema.json"),
-    path.join(dataDir, "challengeBoards.json")
+    path.join(challengeDir, "challengeBoards.json")
   );
 
   validateFile(
     ajv,
     path.join(schemaDir, "challengeSettings.schema.json"),
-    path.join(dataDir, "challengeSettings.json")
+    path.join(challengeDir, "challengeSettings.json")
   );
 
   validateFile(
     ajv,
     path.join(schemaDir, "legacyMap.schema.json"),
-    path.join(dataDir, "legacyMap.json")
+    path.join(challengeDir, "legacyMap.json")
   );
 
-  // 2) Content validation (lexicon + >=3)
-  const lexSet = loadLexiconSet(dataDir);
-
-  const boards = loadJson(path.join(dataDir, "challengeBoards.json"));
-  if (!boards || !Array.isArray(boards.boards)) {
-    console.error("❌ challengeBoards.json must be { boards: [...] }");
-    process.exit(1);
-  }
-
-  validateCsvWords({
-    fileLabel: "challengeBoards.boards",
-    rows: boards.boards,
-    csvField: "totalPossibleWordsCsv",
-    lexSet,
-  });
-
-  validateCsvWords({
-    fileLabel: "challengeBoards.boards",
-    rows: boards.boards,
-    csvField: "targetWordsCsv",
-    lexSet,
-  });
+  // 2) Word-level validation
+  const lexSet = loadLexiconSet(challengeDir);
+  validateBoardsWords({ challengeDir, lexSet });
 
   console.log("\n✅ All Challenge Mode JSON validated successfully.\n");
 }
