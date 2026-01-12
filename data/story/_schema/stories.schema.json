@@ -1,1 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wordmuster.dev/schemas/story/stories.schema.json",
+  "title": "Stories Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["dataVersion", "generatedOn", "sourceLexiconVersion", "stories"],
+  "properties": {
+    "dataVersion": { "type": "string", "minLength": 1 },
+    "generatedOn": { "type": "string", "format": "date-time" },
+    "sourceLexiconVersion": { "type": "string", "minLength": 1 },
+    "stories": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "storyId",
+          "collectionCode",
+          "title",
+          "shortDescription",
+          "moral",
+          "displayOrder",
+          "isActive"
+        ],
+        "properties": {
+          "storyId": { "type": "string", "minLength": 3, "pattern": "^[A-Z0-9_]+$" },
+          "collectionCode": { "type": "string", "minLength": 2, "pattern": "^[A-Z0-9_]+$" },
+          "title": { "type": "string", "minLength": 1 },
+          "shortDescription": { "type": "string", "minLength": 1 },
+          "moral": { "type": "string", "minLength": 1 },
+          "coverImageUrl": { "type": "string" },
+          "displayOrder": { "type": "integer", "minimum": 0 },
+          "isActive": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
 
