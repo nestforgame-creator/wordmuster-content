@@ -71,8 +71,11 @@ function main() {
   const storyDir = path.join(repoRoot, "data", "story");
   const challengeDir = path.join(repoRoot, "data", "challenge");
 
-  const chapters = loadJson(path.join(storyDir, "chapters.json"));
-  const chapterWords = loadJson(path.join(storyDir, "chapterWords.json"));
+  const chapterDoc = loadJson("data/story/chapters.json");
+  const chapters = chapterDoc.rows;
+
+  chapters.forEach(ch => {
+     chapterById.set(ch.chapterId, ch);
 
   // Shared lexicon (Challenge)
   const lexSet = loadLexiconWords(path.join(challengeDir, "lexicon.json"));
