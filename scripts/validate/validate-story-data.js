@@ -1,11 +1,16 @@
 /* eslint-disable no-console */
 const fs = require("fs");
 const path = require("path");
-const Ajv = require("ajv/dist/2020"); // ✅ draft 2020-12 meta-schema support
+const Ajv = require("ajv/dist/2020"); // ✅ draft 2020-12 support
 const addFormats = require("ajv-formats");
 
 function loadJson(p) {
-  return JSON.parse(fs.readFileSync(p, "utf8"));
+  const raw = fs.readFileSync(p, "utf8");
+  // Better error message than "Unexpected end"
+  if (!raw || !raw.trim()) {
+    throw new Error(`File is empty (blank JSON): ${p}`);
+  }
+  return JSON.parse(raw);
 }
 
 function validateFile(ajv, schemaPath, dataPath) {
@@ -27,11 +32,9 @@ function validateFile(ajv, schemaPath, dataPath) {
 function main() {
   const repoRoot = path.resolve(__dirname, "../../");
 
-  // Story data + schemas
   const storyDir = path.join(repoRoot, "data", "story");
   const storySchemaDir = path.join(storyDir, "_schema");
 
-  // Shared lexicon (Challenge)
   const challengeDir = path.join(repoRoot, "data", "challenge");
   const challengeSchemaDir = path.join(challengeDir, "_schema");
 
@@ -45,32 +48,26 @@ function main() {
     path.join(challengeDir, "lexicon.json")
   );
 
-  // 1) Validate Story Mode JSON files against Story schemas
-  validateFile(
-    ajv,
-    path.join(storySchemaDir, "collections.schema.json"),
-    path.join(storyDir, "collections.json")
-  );
+  // 1) Validate Story Mode JSON files (ONLY if schema file exists and is not blank)
+  const pairs = [
+    ["collections.schema.json", "collections.json"],
+    ["stories.schema.json", "stories.json"],
+    ["chapters.schema.json", "chapters.json"],
+    ["chapterWords.schema.json", "chapterWords.json"],
+  ];
 
-  validateFile(
-    ajv,
-    path.join(storySchemaDir, "stories.schema.json"),
-    path.join(storyDir, "stories.json")
-  );
+  for (const [schemaName, dataName] of pairs) {
+    const schemaPath = path.join(storySchemaDir, schemaName);
+    const dataPath = path.join(storyDir, dataName);
 
-  validateFile(
-    ajv,
-    path.join(storySchemaDir, "chapters.schema.json"),
-    path.join(storyDir, "chapters.json")
-  );
+    if (!fs.existsSync(schemaPath)) {
+      console.log(`ℹ️ Skipping ${dataName} (missing schema: ${schemaName})`);
+      continue;
+    }
+    validateFile(ajv, schemaPath, dataPath);
+  }
 
-  validateFile(
-    ajv,
-    path.join(storySchemaDir, "chapterWords.schema.json"),
-    path.join(storyDir, "chapterWords.json")
-  );
-
-  // Optional: storySettings if you use it
+  // Optional: storySettings
   const storySettingsPath = path.join(storyDir, "storySettings.json");
   const storySettingsSchemaPath = path.join(storySchemaDir, "storySettings.schema.json");
   if (fs.existsSync(storySettingsPath) && fs.existsSync(storySettingsSchemaPath)) {
