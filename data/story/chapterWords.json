@@ -1,1 +1,296 @@
-
+{
+  "dataVersion": "1.0.2",
+  "generatedOn": "2026-01-13T00:00:00Z",
+  "sourceLexiconVersion": "f0ed269b920a",
+  "language": "EN",
+  "chapterWords": [
+    {
+      "chapterId": "AESOP_TTH_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T H O R N S D I",
+      "targetWordsCsv": "HONEST,EARTH,HEART,SHORT,HARE,HEAR,HEAT,ROSE,TEAR,AND,RHODESIAN,ERSATION,ANOTHER,ESTONIA,INSTEAD,RODENTS,SENATOR,TINDORA,ARINOS,ATHENS",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_TTH_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E O T S H R A I L N",
+      "targetWordsCsv": "HARE,LAST,LINE,LOST,LOTS,NEAR,REST,THE,ERSATION,ORIENTAL,RELATION,ANOTHER,ESTONIA,HONESTL,LISERAN,RELATIN,RELATIO,SALERNO,SENATOR,ALSTER",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_TTH_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T S H O I R N D",
+      "targetWordsCsv": "EAST,HARE,SAID,THAN,AIR,AND,ARE,END,HIS,ONE,RHODESIAN,ERSATION,ANOTHER,ESTONIA,INSTEAD,RODENTS,SENATOR,TINDORA,ARINOS,ATHENS",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_LM_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E I T S H A N O L R",
+      "targetWordsCsv": "HEART,LINE,LION,HIS,ITS,LET,ONE,RAN,THE,ERSATION,ORIENTAL,RELATION,ANOTHER,ESTONIA,HONESTL,LISERAN,RELATIN,RELATIO,SALERNO,SENATOR",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_LM_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E I T H N R O A L S",
+      "targetWordsCsv": "SILENT,HEAR,INTO,LION,LONE,NEAR,NOTE,HIS,NET,NOT,ERSATION,ORIENTAL,RELATION,ANOTHER,ESTONIA,HONESTL,LISERAN,RELATIN,RELATIO,SALERNO",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_LM_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E I T O R H S N A L",
+      "targetWordsCsv": "THEIR,LION,RISE,SOAR,ITS,THE,ERSATION,ORIENTAL,RELATION,ANOTHER,ESTONIA,HONESTL,LISERAN,RELATIN,RELATIO,SALERNO,SENATOR,ALSTER,ARINOS,ATHENS",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_FG_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A R T O H I N S G",
+      "targetWordsCsv": "ANOTHER,RAGE,THEN,HIS,ONE,THE,ERSATION,ORGANISE,ESTONIA,GRANITE,HEARING,HEATING,ORANGES,SENATOR,STRAIGH,STRANGE,ARINOS,ATHENS,EATING,GATHER",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_FG_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T H I N R C O D",
+      "targetWordsCsv": "REACH,EACH,HARE,THEN,AND,THE,CREATION,REACTION,ACHERON,ANOTHER,ARCHITE,CERTAIN,CORINTH,DECORAT,DIRECTO,ECHIDNA,ECORDIN,TINDORA,ACTION,ANCHOR",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_FG_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T S H R N O D I",
+      "targetWordsCsv": "INSTEAD,HEART,RIDE,RISE,ROSE,SAID,SIRE,THEN,TONE,AND,RHODESIAN,ERSATION,ANOTHER,ESTONIA,RODENTS,SENATOR,TINDORA,ARINOS,ATHENS,DANIOS",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_BCW_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A H T L O S I R D",
+      "targetWordsCsv": "HEAR,ROAD,HIS,THE,REDTAIL,RELATIO,SOLDIER,ALSODR,ALSTER,DEORIA,DESTRO,DETAIL,DORSET,EDITOR,HAIRED,HARDOI,HATRED,HEADLI,HEARTS,HISTOR",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_BCW_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T R H I D N L O",
+      "targetWordsCsv": "THEIR,TIRED,AND,LIE,RAN,THE,ORIENTAL,RELATION,ANOTHER,IRELAND,ORDINAL,REDTAIL,RELATIN,RELATIO,TINDORA,DEORIA,DETAIL,EDITOR,HAIRED,HANDLE",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_BCW_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T O H L S N R B",
+      "targetWordsCsv": "ALONE,LAST,LOST,REAL,ONE,THE,ANOTHER,BARENTS,BREALSO,HONESTL,LOBSTER,SALERNO,SENATOR,ABSENT,ALBERT,ALSTER,ATHENS,BOTHER,BREAST,BREATH",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_AG_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A H R S T O N G D",
+      "targetWordsCsv": "SONG,AND,ANT,THE,ANOTHER,DEOGHAR,ORANGES,RODENTS,SENATOR,STRANGE,TAEDONG,ATHENS,DANGER,DESTRO,DONETS,DORSET,DRAGON,GARDEN,GATHER,GODHRA",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_AG_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E O R T A N H S D I",
+      "targetWordsCsv": "STORE,HARD,REST,AND,ANT,HIS,THE,RHODESIAN,ERSATION,ANOTHER,ESTONIA,INSTEAD,RODENTS,SENATOR,TINDORA,ARINOS,ATHENS,DANIOS,DANISH,DEORIA",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_AG_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T R H N S O L D",
+      "targetWordsCsv": "SHARE,HARD,AND,ANT,THE,SHETLAND,ANOTHER,HONESTL,RODENTS,SALERNO,SENATOR,ALSODR,ALSTER,ATHENS,DESTRO,DONETS,DORSET,ELANDS,HANDLE,HATRED",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_DS_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E O A T I H D R S N",
+      "targetWordsCsv": "AND,HIS,THE,RHODESIAN,ERSATION,ANOTHER,ESTONIA,INSTEAD,RODENTS,SENATOR,TINDORA,ARINOS,ATHENS,DANIOS,DANISH,DEORIA,DESTRO,DONETS,DORSET,EDITOR",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_DS_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T H O N D I S L",
+      "targetWordsCsv": "INTO,LOSE,AND,HAD,HIS,THE,SHETLAND,ESTONIA,HONESTL,INSTEAD,ATHENS,DANIOS,DANISH,DETAIL,DONETS,ELANDS,HANDLE,HEADLI,HEATIN,HOLIDA",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_DS_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "A E T H S D L O N R",
+      "targetWordsCsv": "HARD,REAL,AND,NOT,THE,SHETLAND,ANOTHER,HONESTL,RODENTS,SALERNO,SENATOR,ALSODR,ALSTER,ATHENS,DESTRO,DONETS,DORSET,ELANDS,HANDLE,HATRED",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_GGE_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E O S A I T G H R D",
+      "targetWordsCsv": "HIS,ITS,THE,DEOGHAR,DISAGRE,STRAIGH,DEORIA,DESTRO,DORSET,EDITOR,GATHER,GODHRA,HAIRED,HARDOI,HATRED,HEARTS,HISTOR,IDATES,ODISHA,RADISH",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_GGE_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E O T H D G I L N A",
+      "targetWordsCsv": "GOLD,AND,GET,THE,DELIGHT,GOLIATH,HEATING,LEADING,TAEDONG,TANGELO,ANGLED,DANGLE,DETAIL,EATING,GOLDEN,HANDLE,HEADLI,HEATIN,HOLIDA,LENGTH",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_GGE_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E O T D S H R A L N",
+      "targetWordsCsv": "HARD,LATE,AND,HAS,THE,SHETLAND,ANOTHER,HONESTL,RODENTS,SALERNO,SENATOR,ALSODR,ALSTER,ATHENS,DESTRO,DONETS,DORSET,ELANDS,HANDLE,HATRED",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_BOS_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T H O R D I N S",
+      "targetWordsCsv": "INSTEAD,THEIR,HARD,AND,HIS,NOT,THE,RHODESIAN,ERSATION,ANOTHER,ESTONIA,RODENTS,SENATOR,TINDORA,ARINOS,ATHENS,DANIOS,DANISH,DEORIA,DESTRO",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_BOS_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T H S O N R D I",
+      "targetWordsCsv": "THEIR,AND,HIS,NOT,THE,RHODESIAN,ERSATION,ANOTHER,ESTONIA,INSTEAD,RODENTS,SENATOR,TINDORA,ARINOS,ATHENS,DANIOS,DANISH,DEORIA,DESTRO,DONETS",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_BOS_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T H N S R O I D",
+      "targetWordsCsv": "STAND,THEIR,THEN,AND,ONE,SON,THE,RHODESIAN,ERSATION,ANOTHER,ESTONIA,INSTEAD,RODENTS,SENATOR,TINDORA,ARINOS,ATHENS,DANIOS,DANISH,DEORIA",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_LB_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "A E T N R O I D H L",
+      "targetWordsCsv": "LION,NEAR,AND,HOT,THE,ORIENTAL,RELATION,ANOTHER,IRELAND,ORDINAL,REDTAIL,RELATIN,RELATIO,TINDORA,DEORIA,DETAIL,EDITOR,HAIRED,HANDLE,HARDOI",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_LB_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T H I N O R D S",
+      "targetWordsCsv": "THEIR,AND,THE,RHODESIAN,ERSATION,ANOTHER,ESTONIA,INSTEAD,RODENTS,SENATOR,TINDORA,ARINOS,ATHENS,DANIOS,DANISH,DEORIA,DESTRO,DONETS,DORSET,EDITOR",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_LB_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A T O H N R S C D",
+      "targetWordsCsv": "AND,THE,SECONDAR,ACHERON,ANOTHER,DECORAT,RODENTS,SECONDA,SENATOR,ANCHOR,ATHENS,CARSON,CENTRA,CHARTN,COATED,CORTES,CROSNE,DANCER,DESTRO,DONETS",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_NWS_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "A E T N H O R D W S",
+      "targetWordsCsv": "AND,SAW,THE,WAS,WHO,SANDWORT,ANOTHER,RODENTS,SENATOR,THEWORD,TOWARDS,ANSWER,ATHENS,DAWSON,DESTRO,DONETS,DORSET,HATRED,HEARTS,HONEST",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_NWS_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E I T H L O S N D W",
+      "targetWordsCsv": "HELD,WIND,WITH,HIS,ITS,THE,HONESTL,SITDOWN,WHISTLE,DONETS,HONEST,HOSTEL,LISTED,LISTEN,SILENT,THELON,WHILST,DELHI,DHOLE,DOESN",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_NWS_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E O N T H S A R I G",
+      "targetWordsCsv": "SHINE,HEAT,THAN,THEN,HIS,THE,ERSATION,ORGANISE,ANOTHER,ESTONIA,GRANITE,HEARING,HEATING,ORANGES,SENATOR,STRAIGH,STRANGE,ARINOS,ATHENS,EATING",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_FHS_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A R D H I T N S O",
+      "targetWordsCsv": "AND,HIS,THE,RHODESIAN,ERSATION,ANOTHER,ESTONIA,INSTEAD,RODENTS,SENATOR,TINDORA,ARINOS,ATHENS,DANIOS,DANISH,DEORIA,DESTRO,DONETS,DORSET,EDITOR",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_FHS_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E O N T H D S R A I",
+      "targetWordsCsv": "STONE,HARD,AND,THE,RHODESIAN,ERSATION,ANOTHER,ESTONIA,INSTEAD,RODENTS,SENATOR,TINDORA,ARINOS,ATHENS,DANIOS,DANISH,DEORIA,DESTRO,DONETS,DORSET",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_FHS_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E A R T H S N W D L",
+      "targetWordsCsv": "WEALTH,WHEN,AND,THE,SHETLAND,ALSTER,ANSWER,ATHENS,ELANDS,HANDLE,HATRED,HEARTS,LARSEN,RNEATH,SARTHE,TEHRAN,THREAD,WANDER,WHALER,ALERT",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_CP_CH1",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E O T R A H I W D L",
+      "targetWordsCsv": "TIRED,WATER,HARD,WITH,HOW,LOW,THE,REDTAIL,RELATIO,THEWORD,DEORIA,DETAIL,EDITOR,HAIRED,HARDOI,HATRED,HEADLI,HOLIDA,HOWLER,LITERA",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_CP_CH2",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E O H T R I A S D L",
+      "targetWordsCsv": "IDEA,ROSE,HAD,THE,REDTAIL,RELATIO,SOLDIER,ALSODR,ALSTER,DEORIA,DESTRO,DETAIL,DORSET,EDITOR,HAIRED,HARDOI,HATRED,HEADLI,HEARTS,HISTOR",
+      "isActive": true
+    },
+    {
+      "chapterId": "AESOP_CP_CH3",
+      "gameType": "Story",
+      "difficultyBand": "EASY",
+      "rackSeedLetters": "E O T R H C L A S D",
+      "targetWordsCsv": "CLEAR,LAST,THE,CHARLES,CLOTHES,DECORAT,ESCOLAR,LOCATED,SCARLET,ALSODR,ALSTER,CASTLE,CLARET,CLOSED,CLOSET,CLOTHE,COATED,CORTES,DECLAR,DESTRO",
+      "isActive": true
+    }
+  ]
+}
