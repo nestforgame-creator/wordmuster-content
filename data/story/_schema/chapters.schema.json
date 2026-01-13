@@ -4,10 +4,11 @@
   "title": "Story Chapters Schema",
   "type": "object",
   "additionalProperties": false,
-  "required": ["dataVersion", "generatedOn", "language", "chapters"],
+  "required": ["dataVersion", "generatedOn", "sourceLexiconVersion", "language", "chapters"],
   "properties": {
     "dataVersion": { "type": "string", "minLength": 1 },
     "generatedOn": { "type": "string", "format": "date-time" },
+    "sourceLexiconVersion": { "type": "string", "minLength": 1 },
     "language": { "type": "string", "enum": ["EN"] },
     "chapters": {
       "type": "array",
