@@ -44,12 +44,22 @@ function splitCsv(csv) {
     .filter(Boolean);
 }
 
+/**
+ * Supports BOTH formats:
+ *  - "A B C D E F G H"
+ *  - "ABCDEFGH"
+ */
 function splitRackLetters(rackSeedLetters) {
-  return String(rackSeedLetters || "")
-    .trim()
-    .toUpperCase()
-    .split(/\s+/)
-    .filter(Boolean);
+  const s = String(rackSeedLetters || "").trim().toUpperCase();
+  if (!s) return [];
+
+  // If it contains whitespace, treat as tokenized letters
+  if (/\s/.test(s)) {
+    return s.split(/\s+/).filter(Boolean);
+  }
+
+  // Otherwise treat as a continuous string of letters
+  return s.split("").filter(Boolean);
 }
 
 function rackCounts(letters) {
@@ -120,11 +130,40 @@ function validateBoardsWords({ challengeDir, lexSet }) {
     process.exit(1);
   }
 
+  // Default rack cap is 8. Override in CI if needed:
+  // CHALLENGE_RACK_MAX=9 npm run validate:challenge
+  const MAX_RACK = Number(process.env.CHALLENGE_RACK_MAX || 8);
+
   let issues = 0;
 
   boards.forEach((b, idx) => {
     const boardId = b.boardId || `board_${idx}`;
+
+    if (!b.rackSeedLetters) {
+      console.error(`❌ ${boardId}: missing rackSeedLetters`);
+      issues++;
+      return;
+    }
+
     const rackLetters = splitRackLetters(b.rackSeedLetters);
+
+    // Rack content validation: only A-Z single letters
+    const bad = rackLetters.filter(ch => !/^[A-Z]$/.test(ch));
+    if (bad.length > 0) {
+      console.error(
+        `❌ ${boardId}: rackSeedLetters contains invalid tokens: ${JSON.stringify(bad)} (raw="${b.rackSeedLetters}")`
+      );
+      issues++;
+    }
+
+    // Rack size cap
+    if (rackLetters.length > MAX_RACK) {
+      console.error(
+        `❌ ${boardId}: rack has ${rackLetters.length} letters > max ${MAX_RACK} (raw="${b.rackSeedLetters}")`
+      );
+      issues++;
+    }
+
     const rackMap = rackCounts(rackLetters);
 
     const totalWords = splitCsv(b.totalPossibleWordsCsv);
@@ -187,7 +226,7 @@ function validateBoardsWords({ challengeDir, lexSet }) {
     process.exit(1);
   }
 
-  console.log("✅ challengeBoards: lexicon + length≥3 + rack feasibility + count checks passed.");
+  console.log("✅ challengeBoards: lexicon + length≥3 + rack feasibility + count checks + rack cap passed.");
 }
 
 function main() {
