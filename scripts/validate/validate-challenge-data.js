@@ -1,11 +1,17 @@
 /* eslint-disable no-console */
 const fs = require("fs");
 const path = require("path");
-const Ajv = require("ajv/dist/2020");
+const Ajv = require("ajv/dist/2020"); // draft 2020-12
 const addFormats = require("ajv-formats");
 
 function loadJson(p) {
-  return JSON.parse(fs.readFileSync(p, "utf8"));
+  const raw = fs.readFileSync(p, "utf8");
+  try {
+    return JSON.parse(raw);
+  } catch (e) {
+    console.error(`❌ Invalid JSON: ${p}`);
+    throw e;
+  }
 }
 
 function validateFile(ajv, schemaPath, dataPath) {
@@ -16,7 +22,7 @@ function validateFile(ajv, schemaPath, dataPath) {
   const ok = validate(data);
 
   if (!ok) {
-    console.error(`\n❌ Validation failed: ${dataPath}`);
+    console.error(`\n❌ Schema validation failed: ${dataPath}`);
     console.error(JSON.stringify(validate.errors, null, 2));
     process.exit(1);
   }
@@ -24,6 +30,9 @@ function validateFile(ajv, schemaPath, dataPath) {
   console.log(`✅ Valid: ${path.basename(dataPath)}`);
 }
 
+// -----------------------
+// Word utilities
+// -----------------------
 function normalizeWord(w) {
   return String(w || "").trim().toUpperCase();
 }
@@ -60,28 +69,54 @@ function canFormWordFromRack(word, rackCountMap) {
   return true;
 }
 
+// -----------------------
+// Lexicon loader (supports all known formats)
+//   A) { words: ["WORD", ...] }  <-- current contract
+//   B) { lexicon: ["WORD", ...] } (legacy)
+//   C) ["WORD", ...]             (legacy)
+// -----------------------
 function loadLexiconSet(challengeDir) {
-  const lex = loadJson(path.join(challengeDir, "lexicon.json"));
+  const lexPath = path.join(challengeDir, "lexicon.json");
+  const lex = loadJson(lexPath);
 
-  // Support both formats:
-  // A) { lexicon: ["WORD", ...] }
-  // B) ["WORD", ...]
-  const arr = Array.isArray(lex) ? lex : lex.lexicon;
+  let arr = null;
+  if (Array.isArray(lex)) arr = lex;
+  else if (Array.isArray(lex.words)) arr = lex.words;
+  else if (Array.isArray(lex.lexicon)) arr = lex.lexicon;
 
   if (!Array.isArray(arr)) {
-    throw new Error("lexicon.json must be an array or { lexicon: [...] }");
+    console.error(`❌ lexicon.json unsupported format at: ${lexPath}`);
+    console.error(`   Expected: ["WORD"] OR { words:[...] } OR { lexicon:[...] }`);
+    process.exit(1);
   }
 
-  return new Set(arr.map(w => normalizeWord(w)).filter(Boolean));
+  const set = new Set(arr.map(w => normalizeWord(w)).filter(Boolean));
+  if (set.size === 0) {
+    console.error("❌ lexicon.json produced an empty set after normalization.");
+    process.exit(1);
+  }
+  return set;
+}
+
+// -----------------------
+// Challenge boards word validation
+// -----------------------
+function getBoardsArray(boardsJson) {
+  if (Array.isArray(boardsJson)) return boardsJson;
+  if (Array.isArray(boardsJson.boards)) return boardsJson.boards;
+  if (Array.isArray(boardsJson.challengeBoards)) return boardsJson.challengeBoards;
+  if (Array.isArray(boardsJson.rows)) return boardsJson.rows; // fallback safety
+  return null;
 }
 
 function validateBoardsWords({ challengeDir, lexSet }) {
   const boardsPath = path.join(challengeDir, "challengeBoards.json");
   const boardsJson = loadJson(boardsPath);
 
-  const boards = boardsJson.boards;
+  const boards = getBoardsArray(boardsJson);
   if (!Array.isArray(boards)) {
-    console.error("❌ challengeBoards.json must have a top-level { boards: [] } array");
+    console.error("❌ challengeBoards.json must be an array OR contain { boards: [] }");
+    console.error(`   Path: ${boardsPath}`);
     process.exit(1);
   }
 
@@ -95,7 +130,7 @@ function validateBoardsWords({ challengeDir, lexSet }) {
     const totalWords = splitCsv(b.totalPossibleWordsCsv);
     const targetWords = splitCsv(b.targetWordsCsv);
 
-    // (1) Count integrity checks
+    // (1) Count integrity checks (only if counts exist)
     if (typeof b.totalPossibleWordsCount === "number" && totalWords.length !== b.totalPossibleWordsCount) {
       console.error(`❌ ${boardId}: totalPossibleWordsCount=${b.totalPossibleWordsCount} but csv has ${totalWords.length}`);
       issues++;
@@ -117,7 +152,7 @@ function validateBoardsWords({ challengeDir, lexSet }) {
       issues++;
     }
 
-    // (3) Target must be subset of totalPossible (recommended sanity rule)
+    // (3) Target must be subset of totalPossible (sanity rule)
     targetWords.forEach(w => {
       if (!totalSet.has(w)) {
         console.error(`❌ ${boardId}: target word not in totalPossibleWordsCsv: "${w}"`);
@@ -125,10 +160,10 @@ function validateBoardsWords({ challengeDir, lexSet }) {
       }
     });
 
-    // (4) Validate ALL words (totalPossible + target) are:
+    // (4) Validate ALL words (totalPossible + target):
     // - length >= 3
     // - in lexicon
-    // - rack-feasible
+    // - rack-feasible (frequency-limited)
     const allWords = [...new Set([...totalWords, ...targetWords])];
 
     allWords.forEach(w => {
@@ -164,31 +199,12 @@ function main() {
   addFormats(ajv);
 
   // 1) Schema validation first
-  validateFile(
-    ajv,
-    path.join(schemaDir, "lexicon.schema.json"),
-    path.join(challengeDir, "lexicon.json")
-  );
+  validateFile(ajv, path.join(schemaDir, "lexicon.schema.json"), path.join(challengeDir, "lexicon.json"));
+  validateFile(ajv, path.join(schemaDir, "challengeBoards.schema.json"), path.join(challengeDir, "challengeBoards.json"));
+  validateFile(ajv, path.join(schemaDir, "challengeSettings.schema.json"), path.join(challengeDir, "challengeSettings.json"));
+  validateFile(ajv, path.join(schemaDir, "legacyMap.schema.json"), path.join(challengeDir, "legacyMap.json"));
 
-  validateFile(
-    ajv,
-    path.join(schemaDir, "challengeBoards.schema.json"),
-    path.join(challengeDir, "challengeBoards.json")
-  );
-
-  validateFile(
-    ajv,
-    path.join(schemaDir, "challengeSettings.schema.json"),
-    path.join(challengeDir, "challengeSettings.json")
-  );
-
-  validateFile(
-    ajv,
-    path.join(schemaDir, "legacyMap.schema.json"),
-    path.join(challengeDir, "legacyMap.json")
-  );
-
-  // 2) Word-level validation
+  // 2) Word-level validation (boards)
   const lexSet = loadLexiconSet(challengeDir);
   validateBoardsWords({ challengeDir, lexSet });
 
