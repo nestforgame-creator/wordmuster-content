@@ -4,16 +4,16 @@ on:
   pull_request:
     paths:
       - "data/story/**"
-      - "data/challenge/lexicon.json"
       - "scripts/validate/**"
       - "package.json"
+      - "package-lock.json"
   push:
     branches: ["main"]
     paths:
       - "data/story/**"
-      - "data/challenge/lexicon.json"
       - "scripts/validate/**"
       - "package.json"
+      - "package-lock.json"
   workflow_dispatch:
 
 jobs:
@@ -34,4 +34,3 @@ jobs:
 
       - name: Validate Story
         run: npm run validate:story
-
