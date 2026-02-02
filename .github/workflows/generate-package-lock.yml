@@ -2,13 +2,18 @@ name: Generate package-lock.json
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "package.json"
 
 permissions:
   contents: write
 
 jobs:
-  lockfile:
+  generate_lock:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,24 +23,19 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Clean install to generate lockfile
+      - name: Generate lockfile
         run: |
-          rm -rf node_modules package-lock.json
-          npm install
+          npm install --package-lock-only
+          npm ci
 
-      - name: Commit lockfile
+      - name: Commit lockfile if changed
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git add package-lock.json
-
-          # Commit only if package-lock.json changed
-          if git diff --cached --quiet; then
-            echo "No lockfile changes to commit."
+          if git diff --quiet -- package-lock.json; then
+            echo "No changes to package-lock.json"
             exit 0
           fi
-
-          git commit -m "chore: generate package-lock.json"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git commit -m "chore: generate/update package-lock.json"
           git push
-
