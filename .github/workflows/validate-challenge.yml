@@ -6,12 +6,14 @@ on:
       - "data/challenge/**"
       - "scripts/validate/**"
       - "package.json"
+      - "package-lock.json"
   push:
     branches: ["main"]
     paths:
       - "data/challenge/**"
       - "scripts/validate/**"
       - "package.json"
+      - "package-lock.json"
   workflow_dispatch:
 
 jobs:
