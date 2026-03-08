@@ -1,14 +1,28 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://wordmuster.dev/schemas/challengeBoards.schema.json",
+  "$id": "https://wordmuster.dev/schemas/challenge/challengeBoards.schema.json",
   "title": "Challenge Boards Schema",
   "type": "object",
   "additionalProperties": false,
-  "required": ["dataVersion", "generatedOn", "sourceLexiconVersion", "boards"],
+  "required": [
+    "dataVersion",
+    "generatedOn",
+    "sourceLexiconVersion",
+    "boards"
+  ],
   "properties": {
-    "dataVersion": { "type": "string", "minLength": 1 },
-    "generatedOn": { "type": "string", "format": "date-time" },
-    "sourceLexiconVersion": { "type": "string", "minLength": 1 },
+    "dataVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generatedOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceLexiconVersion": {
+      "type": "string",
+      "minLength": 1
+    },
     "boards": {
       "type": "array",
       "minItems": 1,
@@ -27,23 +41,43 @@
           "isActive"
         ],
         "properties": {
-          "boardId": { "type": "string", "minLength": 1 },
+          "boardId": {
+            "type": "string",
+            "minLength": 1
+          },
           "difficultyBand": {
             "type": "string",
             "enum": ["EASY", "MEDIUM", "HARD", "PRO"]
           },
-          "timerSeconds": { "type": "integer", "enum": [30, 60, 90] },
+          "timerSeconds": {
+            "type": "integer",
+            "enum": [30, 60, 90]
+          },
           "rackSeedLetters": {
             "type": "string",
             "minLength": 1,
-            "description": "Space-separated uppercase letters, e.g., A B C D E F G",
+            "description": "Space-separated uppercase letters, e.g. A B C D E F G",
             "pattern": "^[A-Z](\\s[A-Z])+$"
           },
-          "totalPossibleWordsCount": { "type": "integer", "minimum": 1 },
-          "targetWordsCount": { "type": "integer", "minimum": 1 },
-          "totalPossibleWordsCsv": { "type": "string", "minLength": 3 },
-          "targetWordsCsv": { "type": "string", "minLength": 3 },
-          "isActive": { "type": "boolean" }
+          "totalPossibleWordsCount": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "targetWordsCount": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "totalPossibleWordsCsv": {
+            "type": "string",
+            "minLength": 3
+          },
+          "targetWordsCsv": {
+            "type": "string",
+            "minLength": 3
+          },
+          "isActive": {
+            "type": "boolean"
+          }
         }
       }
     }
