@@ -7,6 +7,7 @@ on:
       - "scripts/validate/**"
       - "package.json"
       - "package-lock.json"
+
   push:
     branches: ["main"]
     paths:
@@ -14,6 +15,7 @@ on:
       - "scripts/validate/**"
       - "package.json"
       - "package-lock.json"
+
   workflow_dispatch:
 
 jobs:
@@ -29,8 +31,8 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install
+      - name: Install dependencies
         run: npm ci
 
-      - name: Validate Challenge
+      - name: Run Challenge Validation
         run: npm run validate:challenge
