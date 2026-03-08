@@ -2,19 +2,17 @@
   "name": "wordmuster-data-validation",
   "version": "1.0.0",
   "private": true,
-  "description": "Validation scripts for WordMuster content repo",
-  "type": "commonjs",
+  "description": "Validation scripts for WordMuster content JSON (challenge + story).",
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^2.1.1"
+  },
   "scripts": {
     "validate:challenge": "node scripts/validate/validate-challenge-data.js",
     "validate:story": "node scripts/validate/validate-story-data.js && node scripts/validate/validate-story-words.js",
-    "validate": "npm run validate:challenge && npm run validate:story"
-  },
-  "dependencies": {
-    "ajv": "^8.17.1",
-    "ajv-formats": "^3.0.1"
-  },
-  "engines": {
-    "node": ">=20"
+    "validate:all": "npm run validate:challenge && npm run validate:story"
   }
 }
-
