@@ -1,10 +1,9 @@
 {
   "dataVersion": "1.0.0",
-  "generatedOn": "2026-01-07T00:00:00Z",
+  "generatedOn": "2026-03-08T00:00:00Z",
   "mapId": "legacy_v1",
   "mode": "challenge",
   "variant": "legacy",
-
   "assets": {
     "backgrounds": {
       "day_1x": "images/challenge/backgrounds/legacy/legacy_map_day_1x.png",
@@ -24,15 +23,18 @@
       "star_filled_2x": "images/challenge/ui/legacy/star_filled_2x.png"
     }
   },
-
   "rendering": {
     "coordinateSystem": "normalized_percent",
     "tileAnchor": "center",
     "tileScale": 0.1,
     "minTapRadius": 0.035,
-    "safeMargins": { "top": 0.06, "right": 0.06, "bottom": 0.08, "left": 0.06 }
+    "safeMargins": {
+      "top": 0.06,
+      "right": 0.06,
+      "bottom": 0.08,
+      "left": 0.06
+    }
   },
-
   "unlockModel": {
     "nodeRule": {
       "requiresPreviousNode": true,
@@ -50,116 +52,54 @@
       "rewardCoinsOnComplete": 25
     }
   },
-
   "nodes": [
     {
       "nodeId": "A",
       "order": 1,
       "letter": "A",
-      "mapTile": { "x": 0.5, "y": 0.86 },
+      "mapTile": { "x": 0.50, "y": 0.86 },
       "unlock": { "requiresNodeId": null, "bypassCostCoins": 0 },
-      "subLevels": [
-        { "subLevelId": "A01", "order": 1, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": null } },
-        { "subLevelId": "A02", "order": 2, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "A01" } },
-        { "subLevelId": "A03", "order": 3, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "A02" } },
-        { "subLevelId": "A04", "order": 4, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "A03" } },
-        { "subLevelId": "A05", "order": 5, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "A04" } },
-        { "subLevelId": "A06", "order": 6, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "A05" } },
-        { "subLevelId": "A07", "order": 7, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "A06" } },
-        { "subLevelId": "A08", "order": 8, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "A07" } },
-        { "subLevelId": "A09", "order": 9, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "A08" } }
-      ]
+      "subLevels": []
     },
-
     {
       "nodeId": "B",
       "order": 2,
       "letter": "B",
       "mapTile": { "x": 0.47, "y": 0.82 },
       "unlock": { "requiresNodeId": "A", "bypassCostCoins": 40 },
-      "subLevels": [
-        { "subLevelId": "B01", "order": 10, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": null } },
-        { "subLevelId": "B02", "order": 11, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "B01" } },
-        { "subLevelId": "B03", "order": 12, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "B02" } },
-        { "subLevelId": "B04", "order": 13, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "B03" } },
-        { "subLevelId": "B05", "order": 14, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "B04" } },
-        { "subLevelId": "B06", "order": 15, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "B05" } },
-        { "subLevelId": "B07", "order": 16, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "B06" } },
-        { "subLevelId": "B08", "order": 17, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "B07" } },
-        { "subLevelId": "B09", "order": 18, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "B08" } }
-      ]
+      "subLevels": []
     },
-
     {
       "nodeId": "C",
       "order": 3,
       "letter": "C",
       "mapTile": { "x": 0.53, "y": 0.78 },
       "unlock": { "requiresNodeId": "B", "bypassCostCoins": 40 },
-      "subLevels": [
-        { "subLevelId": "C01", "order": 19, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": null } },
-        { "subLevelId": "C02", "order": 20, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "C01" } },
-        { "subLevelId": "C03", "order": 21, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "C02" } },
-        { "subLevelId": "C04", "order": 22, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "C03" } },
-        { "subLevelId": "C05", "order": 23, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "C04" } },
-        { "subLevelId": "C06", "order": 24, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "C05" } },
-        { "subLevelId": "C07", "order": 25, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "C06" } },
-        { "subLevelId": "C08", "order": 26, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "C07" } }
-      ]
+      "subLevels": []
     },
-
     {
       "nodeId": "D",
       "order": 4,
       "letter": "D",
       "mapTile": { "x": 0.58, "y": 0.73 },
       "unlock": { "requiresNodeId": "C", "bypassCostCoins": 40 },
-      "subLevels": [
-        { "subLevelId": "D01", "order": 27, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": null } },
-        { "subLevelId": "D02", "order": 28, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "D01" } },
-        { "subLevelId": "D03", "order": 29, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "D02" } },
-        { "subLevelId": "D04", "order": 30, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "D03" } },
-        { "subLevelId": "D05", "order": 31, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "D04" } },
-        { "subLevelId": "D06", "order": 32, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "D05" } },
-        { "subLevelId": "D07", "order": 33, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "D06" } },
-        { "subLevelId": "D08", "order": 34, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "D07" } }
-      ]
+      "subLevels": []
     },
-
     {
       "nodeId": "E",
       "order": 5,
       "letter": "E",
       "mapTile": { "x": 0.62, "y": 0.69 },
       "unlock": { "requiresNodeId": "D", "bypassCostCoins": 40 },
-      "subLevels": [
-        { "subLevelId": "E01", "order": 35, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": null } },
-        { "subLevelId": "E02", "order": 36, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "E01" } },
-        { "subLevelId": "E03", "order": 37, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "E02" } },
-        { "subLevelId": "E04", "order": 38, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "E03" } },
-        { "subLevelId": "E05", "order": 39, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "E04" } },
-        { "subLevelId": "E06", "order": 40, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "E05" } },
-        { "subLevelId": "E07", "order": 41, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "E06" } },
-        { "subLevelId": "E08", "order": 42, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "E07" } }
-      ]
+      "subLevels": []
     },
-
     {
       "nodeId": "F",
       "order": 6,
       "letter": "F",
       "mapTile": { "x": 0.66, "y": 0.64 },
       "unlock": { "requiresNodeId": "E", "bypassCostCoins": 40 },
-      "subLevels": [
-        { "subLevelId": "F01", "order": 43, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": null } },
-        { "subLevelId": "F02", "order": 44, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "F01" } },
-        { "subLevelId": "F03", "order": 45, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "F02" } },
-        { "subLevelId": "F04", "order": 46, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "F03" } },
-        { "subLevelId": "F05", "order": 47, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "F04" } },
-        { "subLevelId": "F06", "order": 48, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "F05" } },
-        { "subLevelId": "F07", "order": 49, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "F06" } },
-        { "subLevelId": "F08", "order": 50, "difficultyBand": "EASY", "timerSeconds": 60, "boardRef": { "type": "filter", "difficultyBand": "EASY", "timerSeconds": 60 }, "unlock": { "requiresSubLevelId": "F07" } }
-      ]
+      "subLevels": []
     }
   ]
 }
