@@ -1,36 +1,42 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://wordmuster.dev/schemas/storyChapterWords.schema.json",
-  "title": "Story ChapterWords Schema",
   "type": "object",
-  "additionalProperties": false,
-  "required": ["dataVersion", "generatedOn", "sourceLexiconVersion", "language", "chapterWords"],
+  "required": [
+    "dataVersion",
+    "generatedOn",
+    "rows"
+  ],
   "properties": {
-    "dataVersion": { "type": "string", "minLength": 1 },
-    "generatedOn": { "type": "string", "format": "date-time" },
-    "sourceLexiconVersion": { "type": "string", "minLength": 1 },
-    "language": { "type": "string", "enum": ["EN"] },
-
-    "chapterWords": {
+    "dataVersion": {
+      "type": "string"
+    },
+    "generatedOn": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "rows": {
       "type": "array",
-      "minItems": 1,
       "items": {
         "type": "object",
-        "additionalProperties": false,
-        "required": ["chapterId", "gameType", "difficultyBand", "rackSeedLetters", "targetWordsCsv", "isActive"],
+        "required": [
+          "chapterId",
+          "targetWordsCsv",
+          "bonusWordsCsv"
+        ],
         "properties": {
-          "chapterId": { "type": "string", "minLength": 1 },
-          "gameType": { "type": "string", "enum": ["Story"] },
-          "difficultyBand": { "type": "string", "enum": ["EASY", "MEDIUM", "HARD", "PRO"] },
-          "rackSeedLetters": {
-            "type": "string",
-            "minLength": 1,
-            "pattern": "^[A-Z](\\s[A-Z])+$"
+          "chapterId": {
+            "type": "string"
           },
-          "targetWordsCsv": { "type": "string", "minLength": 1 },
-          "isActive": { "type": "boolean" }
-        }
+          "targetWordsCsv": {
+            "type": "string"
+          },
+          "bonusWordsCsv": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       }
     }
-  }
+  },
+  "additionalProperties": false
 }
