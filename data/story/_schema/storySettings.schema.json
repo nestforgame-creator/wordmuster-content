@@ -1,39 +1,127 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wordmuster.dev/schemas/story/storySettings.schema.json",
+  "title": "Story Settings Schema",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "dataVersion",
     "generatedOn",
-    "settings"
+    "sourceLexiconVersion",
+    "language",
+    "mode",
+    "textTokens",
+    "rules",
+    "defaults"
   ],
   "properties": {
     "dataVersion": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "generatedOn": {
       "type": "string",
       "format": "date-time"
     },
-    "settings": {
+    "sourceLexiconVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "type": "string",
+      "enum": ["EN"]
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["story"]
+    },
+    "textTokens": {
       "type": "object",
+      "additionalProperties": false,
+      "required": ["tokenFormat", "example"],
+      "properties": {
+        "tokenFormat": {
+          "type": "string",
+          "enum": ["BRACKET_UPPER"]
+        },
+        "example": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
       "required": [
-        "defaultRackSize",
-        "maxBonusWords",
-        "targetWordsPerChapter"
+        "minWordLength",
+        "allWordsMustExistInLexicon",
+        "letterUse"
       ],
       "properties": {
-        "defaultRackSize": {
-          "type": "integer"
+        "minWordLength": {
+          "type": "integer",
+          "minimum": 1
         },
-        "maxBonusWords": {
-          "type": "integer"
+        "allWordsMustExistInLexicon": {
+          "type": "boolean"
         },
-        "targetWordsPerChapter": {
-          "type": "integer"
+        "letterUse": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "notes"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["FREQUENCY_LIMITED"]
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
         }
-      },
-      "additionalProperties": false
+      }
+    },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "targetTimeSeconds",
+        "targetWordsBase",
+        "stars"
+      ],
+      "properties": {
+        "targetTimeSeconds": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "targetWordsBase": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "stars": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["star1Percent", "star2Percent", "star3Percent"],
+          "properties": {
+            "star1Percent": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "star2Percent": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "star3Percent": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          }
+        }
+      }
     }
-  },
-  "additionalProperties": false
+  }
 }
