@@ -1,42 +1,74 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wordmuster.dev/schemas/story/chapterWords.schema.json",
+  "title": "Story Chapter Words Schema",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "dataVersion",
     "generatedOn",
-    "rows"
+    "sourceLexiconVersion",
+    "language",
+    "chapterWords"
   ],
   "properties": {
     "dataVersion": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "generatedOn": {
       "type": "string",
       "format": "date-time"
     },
-    "rows": {
+    "sourceLexiconVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "type": "string",
+      "enum": ["EN"]
+    },
+    "chapterWords": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "required": [
           "chapterId",
+          "gameType",
+          "difficultyBand",
+          "rackSeedLetters",
           "targetWordsCsv",
-          "bonusWordsCsv"
+          "isActive"
         ],
         "properties": {
           "chapterId": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
+          },
+          "gameType": {
+            "type": "string",
+            "enum": ["Story"]
+          },
+          "difficultyBand": {
+            "type": "string",
+            "enum": ["EASY", "MEDIUM", "HARD", "PRO"]
+          },
+          "rackSeedLetters": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Z](\\s[A-Z])+$"
           },
           "targetWordsCsv": {
-            "type": "string"
+            "type": "string",
+            "minLength": 3
           },
-          "bonusWordsCsv": {
-            "type": "string"
+          "isActive": {
+            "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       }
     }
-  },
-  "additionalProperties": false
+  }
 }
