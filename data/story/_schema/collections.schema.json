@@ -1,6 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wordmuster.dev/schemas/story/collections.schema.json",
+  "title": "Story Collections Schema",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "dataVersion",
     "generatedOn",
@@ -9,38 +12,47 @@
   ],
   "properties": {
     "dataVersion": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "generatedOn": {
       "type": "string",
       "format": "date-time"
     },
     "sourceLexiconVersion": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "collections": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "required": [
           "collectionCode",
           "title",
+          "description",
           "language",
+          "isUnlockedByDefault",
           "displayOrder",
           "isActive"
         ],
         "properties": {
           "collectionCode": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "description": {
             "type": "string"
           },
           "language": {
-            "type": "string"
+            "type": "string",
+            "enum": ["EN"]
           },
           "iconKey": {
             "type": "string"
@@ -49,27 +61,28 @@
             "type": "boolean"
           },
           "minChaptersToUnlock": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 0
           },
           "ageBand": {
             "type": "string"
           },
           "difficultyBand": {
-            "type": "string"
+            "type": "string",
+            "enum": ["EASY", "MEDIUM", "HARD", "PRO"]
           },
           "coverImageUrl": {
             "type": "string"
           },
           "displayOrder": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 1
           },
           "isActive": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       }
     }
-  },
-  "additionalProperties": false
+  }
 }
