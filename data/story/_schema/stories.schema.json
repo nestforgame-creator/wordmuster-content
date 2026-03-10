@@ -8,6 +8,7 @@
     "dataVersion",
     "generatedOn",
     "sourceLexiconVersion",
+    "language",
     "stories"
   ],
   "properties": {
@@ -22,6 +23,10 @@
     "sourceLexiconVersion": {
       "type": "string",
       "minLength": 1
+    },
+    "language": {
+      "type": "string",
+      "enum": ["EN"]
     },
     "stories": {
       "type": "array",
