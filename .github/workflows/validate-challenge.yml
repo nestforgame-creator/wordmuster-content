@@ -9,12 +9,13 @@ on:
       - "package-lock.json"
 
   push:
-    branches: ["main"]
+    branches: [main, content-improvement-pass-1]
     paths:
-      - "data/challenge/**"
-      - "scripts/validate/**"
-      - "package.json"
-      - "package-lock.json"
+      - 'data/challenge/**'
+      - 'scripts/validate/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/validate-challenge.yml'
 
   workflow_dispatch:
 
@@ -23,16 +24,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v5
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: 24
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Challenge Validation
-        run: npm run validate:challenge
+      - name: Validate challenge data
+        run: node scripts/validate/validate-challenge-data.js
+
+      - name: Validate board words
+        run: node scripts/validate/validate-boards-words.js
